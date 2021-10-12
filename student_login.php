@@ -8,9 +8,6 @@
 </head>
 <body>
     <?php
-    include 'backend.php';
-    $model = new Model();
-    $login = $model->StudentLogin();
     ?>
     <form action="" method="POST">
         <label>Username</label>
@@ -24,3 +21,26 @@
     
 </body>
 </html>
+<?php
+require ('connection.php');
+if(isset($_POST['login'])){
+    $Username = mysqli_real_escape_string($conn,$_POST['username']);
+    $Password = mysqli_real_escape_string($conn,$_POST['password']);
+
+    if(empty($Username) || empty($Password)){
+        echo "<script>alert('empty input fields');</script>";
+
+    }else{
+        $Query = "SELECT * FROM `Students` WHERE Username = '$Username' AND Password = '$Password'";
+        $sql = mysqli_query($conn, $Query);
+        if(mysqli_num_rows($sql) > 0 ){
+            echo "hello";
+            header('Location:index.html');
+        }else{
+            echo "Error".$sql."<br>".$conn->error;
+
+        }
+    }
+}
+
+?>
