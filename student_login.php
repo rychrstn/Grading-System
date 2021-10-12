@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
         $Query = "SELECT * FROM `Students` WHERE Username = '$Username' AND Password = '$Password'";
         $sql = mysqli_query($conn, $Query);
         if(mysqli_num_rows($sql) > 0 ){
-            echo "hello";
+            echo "hellos";
             header('Location:index.html');
         }else{
             echo "Error".$sql."<br>".$conn->error;
