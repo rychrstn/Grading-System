@@ -31,3 +31,29 @@
     
 </body>
 </html>
+<?php
+include 'connection.php';
+if(isset($_POST['register'])){
+    if(isset($_POST['register'])){
+        $Date = date_default_timezone_set('Asia/Manila');
+        $Date = date('Y-m-d H:i:s');
+        $Username = $_POST['username'];
+        $Password = $_POST['password'];
+        $Firstname = $_POST['firstname'];
+        $Middlename = $_POST['middlename'];
+        $Lastname = $_POST['lastname'];
+        $Year = $_POST['year'];
+
+        $Query = "INSERT INTO `professor`(Username,Password,Firstname,Middlename,Lastname,Year,DateTimeCreated) VALUES ('$Username','$Password','$Firstname','$Middlename','$Lastname','$Year','$Date')";
+        if($sql = mysqli_query($conn,$Query)){
+            echo "<script>alert('Record inserted');</script>";
+
+        }else{
+            echo "record not inserted";
+            return $sql;
+        }
+
+    }
+}
+
+?>

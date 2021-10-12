@@ -8,11 +8,7 @@
     <title>Student Register</title>
 </head>
 <body>
-    <?php
-    include 'backend.php';
-    $model = new Model();
-    $insert = $model->Insert();
-    ?>
+  
     <form action="" method="POST">
         <label> Username </label>
         <input type="text" name="username">
@@ -52,3 +48,31 @@
     </form>
 </body>
 </html>
+<?php
+include 'connection.php';
+    if(isset($_POST['insert'])){
+
+        $Date = date_default_timezone_set('Asia/Manila');
+        $Date = date('Y-m-d H:i:s');
+        $Username = $_POST['username'];
+        $Password = $_POST['password'];
+        $Studentid = $_POST['id'];
+        $Firstname = $_POST['firstname'];
+        $Middlename = $_POST['middlename'];
+        $Lastname = $_POST['lastname'];
+        $YearCourse = $_POST['yearcourse'];
+        $Contacts = $_POST['contacts'];
+        $Status = $_POST['status'];
+
+        $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$Date')";
+        if($sql = mysqli_query($conn,$Query)){
+            echo"<script>alert('Record insert')</script>";
+            
+        }else{
+            echo'not inserted';
+
+        }
+
+    }
+
+?>
