@@ -15,28 +15,27 @@
                     </thead>
                     <tbody>
                         <?php
-                        include 'backend.php';
-                        $model = new Model();
-                        $rows = $model->Fetch();
-                        
-                        if(!empty($rows)){
-                            foreach($rows as $row){
+                        include ('connection.php');
+                        $Query = "SELECT * FROM students";
+                        $sql = mysqli_query($conn,$Query);
+                        if($rows = mysqli_num_rows($sql)> 0 ){
+                            while($rows = mysqli_fetch_array($sql)){
                         ?>
                         <tr>
-                        <td><?php echo $row['ID'];?></td>
-                        <td><?php echo $row['Username'];?></td>
-                        <td><?php echo $row['Password'];?></td>
-                        <td><?php echo $row['StudentID'];?></td>
-                        <td><?php echo $row['Firstname'];?></td>
-                        <td><?php echo $row['Middlename'];?></td>
-                        <td><?php echo $row['Lastname'];?></td>
-                        <td><?php echo $row['YearAndCourse'];?></td>
-                        <td><?php echo $row['ContactNumber'];?></td>
-                        <td><?php echo $row['StudentStatus'];?></td>
+                        <td><?php echo $rows['ID'];?></td>
+                        <td><?php echo $rows['Username'];?></td>
+                        <td><?php echo $rows['Password'];?></td>
+                        <td><?php echo $rows['StudentID'];?></td>
+                        <td><?php echo $rows['Firstname'];?></td>
+                        <td><?php echo $rows['Middlename'];?></td>
+                        <td><?php echo $rows['Lastname'];?></td>
+                        <td><?php echo $rows['YearAndCourse'];?></td>
+                        <td><?php echo $rows['ContactNumber'];?></td>
+                        <td><?php echo $rows['StudentStatus'];?></td>
                         <td>
-                            <a href="read.php?id=<?php echo $row['ID'];?>" class="badge badge-info">Read</a>
-                            <a href="delete.php?id=<?php echo $row['ID']?>" class="badge badge-danger">Delete</a>
-                            <a href="edit.php?id=<?php echo $row['ID']?>" class="badge badge-sucess"> Edit </a>
+                            <a href="read.php?id=<?php echo $rows['ID'];?>" class="badge badge-info">Read</a>
+                            <a href="delete.php?id=<?php echo $rows['ID']?>" class="badge badge-danger">Delete</a>
+                            <a href="edit.php?id=<?php echo $rows['ID']?>" class="badge badge-sucess"> Edit </a>
                         </td>
                         </tr>
                         <?php

@@ -7,13 +7,6 @@
     <title>Student Login</title>
 </head>
 <body>
- 
-    <?php
-
-    include 'backend.php';
-    $model = new Model();
-    $login = $model->AdminLogin();
-    ?>
     <form action="" method="POST">
         <label>Username</label>
         <input type="text" name="username" placeholder="Enter Username">
@@ -26,3 +19,25 @@
     
 </body>
 </html>
+<?php
+ if(isset($_POST['login'])){
+    $Username = mysqli_real_escape_string($conn,$_POST['username']);
+    $Password = mysqli_real_escape_string($conn,$_POST['password']);
+
+    if(empty($Username) || empty($Password)){
+        echo "<script>alert('empty input field');</script>";
+
+    }else{
+        $Query = "SELECT * FROM admin Where Username = '$Username' And Password = '$Password'";
+        $sql = mysqli_query($conn,$Query);
+
+        if(mysqli_num_rows($sql)> 0 ){
+            echo "Hello";
+        }else{
+            echo "Not hello".$sql."<br>".$conn->error;
+
+        }
+    }
+}
+
+?>
