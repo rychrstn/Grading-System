@@ -60,11 +60,11 @@
 include 'connection.php';
 
     if(isset($_POST['insert'])){
-
         $Date = date_default_timezone_set('Asia/Manila');
         $Date = date('Y-m-d H:i:s');
         $Username = $_POST['username'];
         $Password = $_POST['password'];
+        $Password = password_hash($Password , PASSWORD_BCRYPT);
         $Studentid = $_POST['id'];
         $Firstname = $_POST['firstname'];
         $Middlename = $_POST['middlename'];
@@ -72,9 +72,15 @@ include 'connection.php';
         $YearCourse = $_POST['yearcourse'];
         $Contacts = $_POST['contacts'];
         $Status = $_POST['status'];
+        $bool = 1;
+       
 
+<<<<<<< HEAD
         
         $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$Date')";
+=======
+        $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
+>>>>>>> dd4a69d4dff81accc6c63f8560d8e831cd1ba3a7
         if($sql = mysqli_query($conn,$Query)){
             echo"<script>alert('Record insert')</script>";
         }
