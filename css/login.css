@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family:monospace;
+}
+
+
+.title {
+        text-align: center;
+        padding-top: 100px;
+}
+
+.um_logo {
+    padding-top: 0px;
+}
+
+.uname {
+    text-align: right;
+}
+
+.textboxdiv {
+    border-bottom: 2px solid white;
+    position: relative;
+    margin: 35px 0;
+    text-align:center;
+    height: 20px;
+}
+
+input {
+    height: 30px;
+    width: 200px;
+    margin-left: -15px;
+}
+
+.signup {
+    color: black;
+    margin-top: 10px;
+    text-align: center;
+    margin-left: -20px;
+}
+
+
+.box {
+    position: fixed;
+    background: white;
+    border-radius: 25px;
+    border: 5px solid green;
+    height: 500px;
+    width: 500px;
+    margin-left: 428px;
+    margin-top: 40px;
+}
+
+.btnlogin {
+    margin-left: -15px;
+}
+
+
