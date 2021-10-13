@@ -75,12 +75,9 @@ include 'connection.php';
         $bool = 1;
        
 
-<<<<<<< HEAD
         
         $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$Date')";
-=======
         $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
->>>>>>> dd4a69d4dff81accc6c63f8560d8e831cd1ba3a7
         if($sql = mysqli_query($conn,$Query)){
             echo"<script>alert('Record insert')</script>";
         }

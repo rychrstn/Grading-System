@@ -16,12 +16,17 @@
         while($rows = mysqli_fetch_array($sql)){
             $id = $rows['Valid'];
     ?>
+    <input type="hidden" name="bool" value="<?php echo $id ?>">
+        <?php
+        }
+    }
+
+    ?>
     
     <section>
     <div class="box"></div>
         </section>
     <form action="" method="POST">
-<<<<<<< HEAD
     <div class="textboxdiv">
     <div class="title"><h1>The Univerity of Manila</h1>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
@@ -35,18 +40,11 @@
         type="text" name="username" placeholder="Username">
         <br>
         <br>
-        <input style="border: 2px solid lightgreen; font-size: 20px"
-         type = "password" name="password" placeholder="Password">
-=======
-        <input type="hidden" name="bool" value="<?php echo $id ?>">
-        <?php
-        }
-    }
-
-    ?>
+        <input style="border: 2px solid lightgreen; font-size: 20px">
+         <input type = "password" name="password" placeholder="Password">
+   
         <label>Username</label>
         <input type="text" name="username" placeholder="Enter Username">
->>>>>>> dd4a69d4dff81accc6c63f8560d8e831cd1ba3a7
         <br>
         <br>
         <br>
@@ -59,7 +57,6 @@
         </div>
     </div>
     </form>
-<<<<<<< HEAD
     
     
 </body>
@@ -67,13 +64,11 @@
 <?php
 include 'connection.php';
 session_start();	
-=======
-   
+   ?>
 </body>
 </html>
 <?php
 include ('connection.php');
->>>>>>> dd4a69d4dff81accc6c63f8560d8e831cd1ba3a7
 if(isset($_POST['login'])){
     $Username = mysqli_real_escape_string($conn,$_POST['username']);
     $Password = mysqli_real_escape_string($conn,$_POST['password']);
@@ -87,7 +82,6 @@ if(isset($_POST['login'])){
 
     }else{
         $Query = "SELECT * FROM `Students` WHERE Username = '$Username' AND Password = '$Password'";
-<<<<<<< HEAD
         $sql = mysqli_query($conn, $Query);
         if(mysqli_num_rows($sql) > 0 ){
             echo "hellos";
@@ -96,7 +90,6 @@ if(isset($_POST['login'])){
         else{
             echo "<script>alert('The Username or Password is incorrect');</script>";
             //echo "Error".$sql."<br>".$conn->error;
-=======
         $Sql = mysqli_query($conn,$Query);
 
         if(mysqli_num_rows($sql)> 0)
@@ -118,9 +111,9 @@ if(isset($_POST['login'])){
             
         }else{
             echo "error".$sql."<br>".$conn->error;
->>>>>>> dd4a69d4dff81accc6c63f8560d8e831cd1ba3a7
         }
     }
+}
 }
 
 mysqli_close($conn);
