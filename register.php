@@ -4,52 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/d29cb4cf2b.js" crossorigin="anonymous"></script>
     <title>Student Register</title>
 </head>
 <body>
-  
-    <form action="" method="POST">
-        <label> Username </label>
-        <input type="text" name="username">
+    <section>
+        <div class="box"></div>
+        </section>
+    <form method="post">
+    <div class="textboxdiv">
+    <div class="title"><p><b>Sign Up</b></p>
+    </div>
+         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+         type="text" name="username" placeholder = "Username" required>
+         <i class="far fa-user"></i>
         <br>
-        <label> Password </label>
-        <input type="password" name="password">
+        
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="password" name="password" placeholder = "Password" required>
+        <i class="fas fa-lock"></i>
         <br>
-        <label>Student ID</label>
-        <input type="number" name="id">
+         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+         type="number" name="id" placeholder = "Student ID" required>
         <br>
-        <label>Firstname</label>
-        <input type="text" name="firstname">
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" name="firstname" placeholder = "First Name" required>
         <br>
-        <label>Middlename</label>
-        <input type="text" name="middlename">
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+         type="text" name="middlename" placeholder = "Middle Name" required>
         <br>
-        <label>Lastname</label>
-        <input type="text" name="lastname">
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+         type="text" name="lastname" placeholder = "Last Name" required>
         <br>
-        <label>Year & Course</label>
-        <input type="text" name="yearcourse">
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+         type="text" name="yearcourse" placeholder = "Year & Course" required>
         <br>
-        <label>Contact Number</label>
-        <input type="number" name="contacts">
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="number" name="contacts" placeholder = "Contact Number" required>
         <br>
-        <label>Student's Status </label>
-        <select name="status">
-            <option value="">--Select--</option>
+        <select style="border: 1px solid black; font-size: 20px; margin-top: 5px; width: 250px;" 
+        name="status">
+            <option value="">Student's Status</option>
             <option value="Regular">Regular Student</option>
             <option value="Irreguar"> Irregular Student</option>
         </select>
         <br>
-
-        <input type="submit" name="insert" value="register">
-
-
+        <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;"
+        type="submit" name="insert" value="Sign Up">
     </form>
+    
 </body>
 </html>
 <?php
 include 'connection.php';
+
     if(isset($_POST['insert'])){
 
         $Date = date_default_timezone_set('Asia/Manila');
@@ -64,15 +73,14 @@ include 'connection.php';
         $Contacts = $_POST['contacts'];
         $Status = $_POST['status'];
 
+        
         $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$Date')";
         if($sql = mysqli_query($conn,$Query)){
             echo"<script>alert('Record insert')</script>";
-            
-        }else{
-            echo'not inserted';
-
         }
-
-    }
+            else{
+                echo'not inserted';
+            }
+        }
 
 ?>

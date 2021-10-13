@@ -4,29 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profreg.css">
+    <script src="https://kit.fontawesome.com/d29cb4cf2b.js" crossorigin="anonymous"></script>
     <title>Professor Register</title>
 </head>
 <body>
+<section>
+        <div class="box"></div>
+        </section>
     <form action="" method="POST">
-        <label>Username</label>
-        <input type="text" name="username" placeholder="Enter Username">
+    <div class="textboxdiv">
+    <div class="title"><p><b>Sign Up</b></p>
+    </div>
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;" 
+        type="text" name="username" placeholder="Username" required>
+        <i class="fas fa-user-tie"></i>
         <br>
-        <label>Password</label>
-        <input type="text" name="password" placeholder="Enter Password">
+        
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" name="password" placeholder="Password" required>
+        <i class="fas fa-lock"></i>
         <br>
-        <label>Firstname</label>
-        <input type="text" name="firstname" placeholder="Enter Firstname">
+        
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" name="firstname" placeholder="Firstname" required>
         <br>
-        <label>Middlename</label>
-        <input type="text" name="middlename" placeholder="Enter Middlename">
+        
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" name="middlename" placeholder="Middlename" required>
         <br>
-        <label>Lastname</label>
-        <input type="text" name="lastname" placeholder="Enter Lastname">
+        
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" name="lastname" placeholder="Lastname" required>
         <br>
-        <label>Year</label>
-        <input type="text" name="year" placeholder="Enter Year">
+        
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" name="year" placeholder="Year" required>
         <br>
-        <input type="submit" name="register" value="register">
+        <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;"
+        type="submit" name="register" value="Sign up">
     </form>
     
 </body>
