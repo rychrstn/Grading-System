@@ -56,6 +56,13 @@
     
 </body>
 </html>
+<script type="text/javascript">
+    // Callback
+    window.onbeforeunload = function(e) {
+        // Turning off the event
+        e.preventDefault();
+    }
+</script>
 <?php
 include 'connection.php';
 
@@ -64,7 +71,7 @@ include 'connection.php';
         $Date = date('Y-m-d H:i:s');
         $Username = $_POST['username'];
         $Password = $_POST['password'];
-        $Password = password_hash($Password , PASSWORD_BCRYPT);
+        $hash = password_hash($Password, algo:PASSWORD_BCRYPT);
         $Studentid = $_POST['id'];
         $Firstname = $_POST['firstname'];
         $Middlename = $_POST['middlename'];
@@ -73,17 +80,15 @@ include 'connection.php';
         $Contacts = $_POST['contacts'];
         $Status = $_POST['status'];
         $bool = 1;
-       
 
-        
-        $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$Date')";
-        $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$Password','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
+        $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$hash','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
         if($sql = mysqli_query($conn,$Query)){
             echo"<script>alert('Record insert')</script>";
         }
             else{
                 echo'not inserted';
+             
             }
         }
-
+        
 ?>

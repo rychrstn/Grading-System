@@ -1,120 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <title>The University of Manila</title>
 </head>
 <body>
     <?php
     include ('connection.php');
-    $Select = "SELECT * FROM `Students`";
+    $Select = "SELECT * FROM `students`";
     $sql = mysqli_query($conn,$Select);
     if($rows = mysqli_num_rows($sql)> 0 ){
         while($rows = mysqli_fetch_array($sql)){
             $id = $rows['Valid'];
     ?>
-    <input type="hidden" name="bool" value="<?php echo $id ?>">
+    <form action="" method="POST">
+        <input type="hidden" name="bool" value="<?php echo $id ?>">
         <?php
         }
     }
 
     ?>
-    
-    <section>
-    <div class="box"></div>
-        </section>
-    <form action="" method="POST">
-    <div class="textboxdiv">
-    <div class="title"><h1>The Univerity of Manila</h1>
-    <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
-    </div>
-    
-    <br>
-    <br>
-    <br>
-    <div>
-        <input style="border: 2px solid lightgreen; font-size: 20px"
-        type="text" name="username" placeholder="Username">
-        <br>
-        <br>
-        <input style="border: 2px solid lightgreen; font-size: 20px">
-         <input type = "password" name="password" placeholder="Password">
-   
         <label>Username</label>
         <input type="text" name="username" placeholder="Enter Username">
         <br>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter Password">
         <br>
-        <br>
-        <input class="btnlogin" style="width: 100px; height: 50px; color: white; background-color:black; font-size: 20px;" type="submit" name="login" value="Login">
-        <div class="signup">
-			Don't have an Account?
-			</br>
-			<a style = "color: #1EA4E3"; href="register.php">Click here to Sign up</a>
-		</div>
-        </div>
-    </div>
+        <input type="submit" name="login" value="Login">
     </form>
     
-    
+
 </body>
 </html>
 <?php
-include 'connection.php';
-session_start();	
-   ?>
-</body>
-</html>
-<?php
-include ('connection.php');
+require ('connection.php');
+session_start();
 if(isset($_POST['login'])){
-    $Username = mysqli_real_escape_string($conn,$_POST['username']);
-    $Password = mysqli_real_escape_string($conn,$_POST['password']);
-    $Password = password_hash($Password, PASSWORD_DEFAULT);
-    $bool = $_POST['bool'];
-
-
-
-    if(empty($Username) || empty($Password)){
-        echo "<script>alert('empty input fields');</script>";
-
+    if(empty($_POST['username']) || empty($_POST['password'])){
+        echo '<script>alert("Both fields are empty");</script>';
     }else{
-        $Query = "SELECT * FROM `Students` WHERE Username = '$Username' AND Password = '$Password'";
-        $sql = mysqli_query($conn, $Query);
-        if(mysqli_num_rows($sql) > 0 ){
-            echo "hellos";
-            header('Location:index.html');
-        }
-        else{
-            echo "<script>alert('The Username or Password is incorrect');</script>";
-            //echo "Error".$sql."<br>".$conn->error;
-        $Sql = mysqli_query($conn,$Query);
+            $Username = mysqli_real_escape_string($conn,$_POST['username']);
+            $Password = mysqli_real_escape_string($conn,$_POST['password']);
+            $Bool = $_POST['bool'];
+            $Login = "SELECT ID,Password FROM `students` WHERE Username = '$Username'";
+            $Sql = mysqli_query($conn,$Login);
+            if($Sql->num_rows > 0 ) {
+                $data = $Sql->fetch_array();
+                if(!password_verify($Password , $data['Password'])){
+                    echo"Is wrong";
+                    if($Bool != 1){
+                        echo "You're not yet validated";
+                    }else{
+                        header('Location:index.php');
 
-        if(mysqli_num_rows($sql)> 0)
-        {
-            if($bool == 1 )
-            {
-                echo "hello";
-            }
-            else{
-                echo "Your account is not yet validated by the office";
-            }
-            while($row = mysqli_fetch_assoc($sql))
-            {
-                if(password_verify($Passowrd,$row['password']))
-                {
-                    echo "right password";
+                    }
+                }else{
+                    
                 }
+
+            }else{
+                echo "no account".$Sql."<br>".$conn->error;
             }
-            
-        }else{
-            echo "error".$sql."<br>".$conn->error;
+            // if(mysqli_num_rows($Sql) > 0 )
+            // {
+            //     while($row = mysqli_fetch_assoc($Sql))
+            //     {
+            //         if(password_verify($Password , $row['Password']))
+            //         {
+            //             $_SESSION['username'] = $Username;
+            //             echo "hello";
+
+            //         }else{
+            //             echo "wrong details";
+            //         }
+            //     }
+            // }else{
+            //     echo "ERROR";
+            // }
         }
     }
-}
-}
 
-mysqli_close($conn);
+
 ?>

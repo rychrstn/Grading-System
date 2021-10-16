@@ -33,6 +33,10 @@
                         <td><?php echo $rows['ContactNumber'];?></td>
                         <td><?php echo $rows['StudentStatus'];?></td>
                         <td>
+                            <form action="edit_students.php" method="POST">
+                                <input type="hidden" name="edit_id" value="<?php echo $rows['ID'];?>">
+                                <input type="submit" name="update" value="Update student">
+                            </form>
                             <a href="read.php?id=<?php echo $rows['ID'];?>" class="badge badge-info">Read</a>
                             <a href="delete.php?id=<?php echo $rows['ID']?>" class="badge badge-danger">Delete</a>
                             <a href="edit.php?id=<?php echo $rows['ID']?>" class="badge badge-sucess"> Edit </a>
