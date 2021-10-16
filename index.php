@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['username'])){
-    header("location:index.php?action=login");
+    header("location:student_login.php?action=login");
 
 }
 ?>
@@ -15,6 +15,6 @@ if(!isset($_SESSION['username'])){
     <title>Document</title>
 </head>
 <body>
-    <p>Hello <?php $_SESSION['username'];?></p>
+    <p>Hello <?php echo  $_SESSION['username'];?></p>
 </body>
 </html>
