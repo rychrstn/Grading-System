@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Oct 09, 2021 at 04:35 AM
+-- Generation Time: Oct 16, 2021 at 07:21 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -71,9 +71,16 @@ CREATE TABLE `professor` (
   `Middlename` varchar(20) NOT NULL,
   `Lastname` varchar(20) NOT NULL,
   `Year` varchar(20) NOT NULL,
-  `DateTimeCrated` datetime NOT NULL DEFAULT current_timestamp(),
+  `DateTimeCreated` datetime NOT NULL,
   `DateTImeUpdated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `professor`
+--
+
+INSERT INTO `professor` (`ID`, `Username`, `Password`, `Firstname`, `Middlename`, `Lastname`, `Year`, `DateTimeCreated`, `DateTImeUpdated`) VALUES
+(1, 'ff', 'ss', 'qwe', 'qwe', 'eee', '2', '2021-10-12 14:18:17', '2021-10-12 14:18:17');
 
 -- --------------------------------------------------------
 
@@ -106,6 +113,7 @@ CREATE TABLE `students` (
   `YearAndCourse` varchar(20) NOT NULL,
   `ContactNumber` int(12) NOT NULL,
   `StudentStatus` varchar(20) NOT NULL,
+  `Valid` tinyint(1) NOT NULL,
   `DateTimeCreated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `DateTimeUpdated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -114,8 +122,13 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`ID`, `Username`, `Password`, `StudentID`, `Firstname`, `Middlename`, `Lastname`, `YearAndCourse`, `ContactNumber`, `StudentStatus`, `DateTimeCreated`, `DateTimeUpdated`) VALUES
-(1, 'Anthony', '123', '333', 'anthony', 'rosa', 'vega', '1-b', 2147483647, 'Regular', '2021-10-08 00:22:39', '2021-10-08 00:22:39');
+INSERT INTO `students` (`ID`, `Username`, `Password`, `StudentID`, `Firstname`, `Middlename`, `Lastname`, `YearAndCourse`, `ContactNumber`, `StudentStatus`, `Valid`, `DateTimeCreated`, `DateTimeUpdated`) VALUES
+(21, 'adf', '$2y$10$QkIbHFkoU71lj', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 10:46:24', '2021-10-15 10:46:24'),
+(22, 'fff', '$2y$10$NkbDP/gvUfoIH', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 11:08:50', '2021-10-15 11:08:50'),
+(23, 'sss', '$2y$10$zkMvveMbO00LX', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 11:44:37', '2021-10-15 11:44:37'),
+(24, 'sss', '$2y$10$m2dH.8J2zBOmU', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 11:46:45', '2021-10-15 11:46:45'),
+(25, 'bbb', '$2y$10$aY209SMP5Dm7dZiNZwqUxOh0X1DhsCxuiq8CgVKPRNvKJUsQTz50a', '123123', 'Yu Vega', 'Anthony', 'R.', '22', 1234567890, 'Regular', 1, '2021-10-15 11:55:45', '2021-10-15 11:55:45'),
+(26, 'adf', '$2y$10$pocUwTPhBkBG2TZM1AbZ0.biPIJmI3q5ccQ22nJHlH5q1flQBiWTi', '12313123', 'Yu Vega', 'Anthony', 'R.', '22', 1234567890, 'Regular', 1, '2021-10-17 01:09:51', '2021-10-17 01:09:51');
 
 -- --------------------------------------------------------
 
@@ -134,6 +147,14 @@ CREATE TABLE `subjects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `Prof_id`, `SubjectCode`, `SubjectName`, `Unit`, `DateTimeCreated`, `DateTimeUpdated`) VALUES
+(3, 1, 'HCI101', 'ffff', '3', '2021-10-12 14:44:34', '2021-10-12 14:44:34'),
+(4, 1, '', '', '', '2021-10-13 22:17:46', '2021-10-13 22:17:46');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -147,7 +168,9 @@ ALTER TABLE `admin`
 -- Indexes for table `grades`
 --
 ALTER TABLE `grades`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Prof_ID` (`Prof_ID`,`Subject_ID`),
+  ADD KEY `Subject_ID` (`Subject_ID`);
 
 --
 -- Indexes for table `professor`
@@ -172,7 +195,8 @@ ALTER TABLE `students`
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Prof_id` (`Prof_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -194,7 +218,7 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `studentgrades`
@@ -206,13 +230,29 @@ ALTER TABLE `studentgrades`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `grades`
+--
+ALTER TABLE `grades`
+  ADD CONSTRAINT `grades_ibfk_1` FOREIGN KEY (`Subject_ID`) REFERENCES `students` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD CONSTRAINT `subjects_ibfk_1` FOREIGN KEY (`Prof_id`) REFERENCES `professor` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -79,14 +79,14 @@ include 'connection.php';
         $YearCourse = $_POST['yearcourse'];
         $Contacts = $_POST['contacts'];
         $Status = $_POST['status'];
-        $bool = 1;
+        $bool = 0;
 
         $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$hash','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
         if($sql = mysqli_query($conn,$Query)){
             echo"<script>alert('Record insert')</script>";
         }
             else{
-                echo'not inserted';
+                echo'not inserted'.$sql."<br>".$conn->error;
              
             }
         }
