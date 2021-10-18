@@ -50,8 +50,13 @@
             <option value="Irreguar"> Irregular Student</option>
         </select>
         <br>
-        <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;"
+        <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;
+        margin-bottom: 2px;"
         type="submit" name="insert" value="Sign Up">
+        <br>
+        <div style="font-family: monospace; font-size: 15px;">Already have an Account?</div> 
+        <a style="text-decoration: none; color: #1EA4E3;
+        font-family: monospace; font-size: 15px" href="student_login.php">Click here to Login</a>
     </form>
     
 </body>

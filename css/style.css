@@ -28,7 +28,7 @@ form {
     margin-top: 10px;
 }
 .box {
-    position: absolute;
+    position: fixed;
     background: white;
     border-radius: 25px;
     border: 5px solid green;
@@ -45,4 +45,3 @@ i {
     position: fixed;
     color: grey;
 }
-
