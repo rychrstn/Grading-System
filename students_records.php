@@ -37,6 +37,10 @@
                                 <input type="hidden" name="edit_id" value="<?php echo $rows['ID'];?>">
                                 <input type="submit" name="update" value="Update student">
                             </form>
+                            <form action ="admin_validate_students.php" method="POST">
+                                <input type="hidden" name="valid_id" value="<?php echo $rows['ID']?>">
+                                <input type="submit" name="validate" value="Validate student">
+                            </form>
                             <a href="read.php?id=<?php echo $rows['ID'];?>" class="badge badge-info">Read</a>
                             <a href="delete.php?id=<?php echo $rows['ID']?>" class="badge badge-danger">Delete</a>
                             <a href="edit.php?id=<?php echo $rows['ID']?>" class="badge badge-sucess"> Edit </a>

@@ -17,6 +17,7 @@
             foreach($Sql as $results){
                 ?>
                 <form action="update_students.php" method="POST">
+                <input type="hidden" name="edit_id" value="<?php echo $results['ID'];?>">
                 <label> Username </label>
                 <input type="text" name="editusername" value="<?php echo $results['Username'];?>">
                 <br>
@@ -43,23 +44,16 @@
                 <br>
                 <label> Student Status</label>
                 <select name="editstudentstatus">
-                    <option value="Regular">
                     <?php
-                    if($results['StudentStatus'] == 'Regular')
-                    {
-                        echo "selected";
-                    }
-                    ?>
-                    Regular </option>
-                    <option value="Irregular"> 
-                    <?php
-                    if($results['StudentStatus'] == 'Irregular')
-                    {
-                        echo "selected";
+                    if($results ['StudentStatus']){
+                        echo "<option>Regular</option>";
+                        echo "<option>Irregular</option>";
+                    }else{
+                        echo "<option>Irregular</option>";
+                        echo "<option>Regular</option>";
                     }
                     ?>
                 </select>
-                <input type="text" name="editstudentstatus" value="<?php echo $results['StudentStatus'];?>">
                 <input type="submit" name="update_students" value="Update Students">
 
 

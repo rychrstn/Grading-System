@@ -86,7 +86,7 @@ if(isset($_POST['login'])){
                         echo "<div class = FieldError1><p>Wrong Password!</p></div>";
                         }
             }else{
-                echo "no account".$Sql."<br>".$conn->error;
+                echo "no account";
             }
         }
     }
