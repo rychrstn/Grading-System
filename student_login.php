@@ -46,9 +46,8 @@
         <br>
         <input class="btnlogin" style="width: 100px; height: 50px; color: white; background-color:black; font-size: 20px;" type="submit" name="login" value="Login">
         <div class="signup">
-			Don't have an Account?
-			</br>
-			<a style = "color: #1EA4E3"; href="register.php">Click here to Sign up</a>
+			<div style="font-size: 15px;">Don't have an Account?</div>
+			<a style = "color: #1EA4E3; font-size: 15px;" href="register.php">Click here to Sign up</a>
 		</div>
         </div>
     </div>
@@ -87,6 +86,7 @@ if(isset($_POST['login'])){
                         }
             }else{
                 echo "no account";
+                echo "<div class = FieldError2><p>Account do not Exist!</p></div>";
             }
         }
     }
