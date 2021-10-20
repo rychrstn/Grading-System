@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Oct 16, 2021 at 07:21 PM
+-- Generation Time: Oct 20, 2021 at 10:14 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -53,8 +53,8 @@ CREATE TABLE `grades` (
   `Grades` int(2) NOT NULL,
   `Term` varchar(20) NOT NULL,
   `Remarks` varchar(20) NOT NULL,
-  `DateTimeCreated` datetime NOT NULL,
-  `DateTimeUpdated` datetime NOT NULL
+  `DateTimeCreated` datetime NOT NULL DEFAULT current_timestamp(),
+  `DateTimeUpdated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,12 +66,12 @@ CREATE TABLE `grades` (
 CREATE TABLE `professor` (
   `ID` int(6) NOT NULL,
   `Username` varchar(20) NOT NULL,
-  `Password` varchar(20) NOT NULL,
+  `Password` varchar(255) NOT NULL,
   `Firstname` varchar(20) NOT NULL,
   `Middlename` varchar(20) NOT NULL,
   `Lastname` varchar(20) NOT NULL,
   `Year` varchar(20) NOT NULL,
-  `DateTimeCreated` datetime NOT NULL,
+  `DateTimeCreated` datetime NOT NULL DEFAULT current_timestamp(),
   `DateTImeUpdated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -80,7 +80,11 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`ID`, `Username`, `Password`, `Firstname`, `Middlename`, `Lastname`, `Year`, `DateTimeCreated`, `DateTImeUpdated`) VALUES
-(1, 'ff', 'ss', 'qwe', 'qwe', 'eee', '2', '2021-10-12 14:18:17', '2021-10-12 14:18:17');
+(1, 'ff', 'ss', 'qwe', 'qwe', 'eee', '2', '2021-10-12 14:18:17', '2021-10-12 14:18:17'),
+(2, 'aaa', '$2y$10$RJ.17IfTwfXCz0SLCqw0B.jOf.hFgdQcMmDVwU679blym2WMgi/SC', 'adf', 'ff', 'ss', '2 yr', '2021-10-20 09:34:59', '2021-10-20 09:34:59'),
+(3, 'aaa', '$2y$10$a7oloP0JI/WpYqeaWVIgY.rohCJbrBn8FIIrjsh0mqf101.YDnOLS', 'adf', 'ff', 'ss', '2 yr', '2021-10-20 09:38:00', '2021-10-20 09:38:00'),
+(4, 'aaa', '$2y$10$6aroT6xl2zOfeyq1IHTC7OFj03ySDFZ0zsVt5t9C1jxNgMCDnZCDe', 'adf', 'ff', 'ss', '2 yr', '2021-10-20 09:39:33', '2021-10-20 09:39:33'),
+(5, 'adf', '$2y$10$41GbSJ998A7Vugq1JJ/zJe2SOb0AovWlbvzXXTo.HJcZdbNrcfYn.', 'adf', 'ff', 'ss', '2 ', '2021-10-20 09:39:58', '2021-10-20 09:39:58');
 
 -- --------------------------------------------------------
 
@@ -114,8 +118,8 @@ CREATE TABLE `students` (
   `ContactNumber` int(12) NOT NULL,
   `StudentStatus` varchar(20) NOT NULL,
   `Valid` tinyint(1) NOT NULL,
-  `DateTimeCreated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `DateTimeUpdated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `DateTimeCreated` datetime NOT NULL DEFAULT current_timestamp(),
+  `DateTimeUpdated` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -123,12 +127,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`ID`, `Username`, `Password`, `StudentID`, `Firstname`, `Middlename`, `Lastname`, `YearAndCourse`, `ContactNumber`, `StudentStatus`, `Valid`, `DateTimeCreated`, `DateTimeUpdated`) VALUES
-(21, 'adf', '$2y$10$QkIbHFkoU71lj', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 10:46:24', '2021-10-15 10:46:24'),
-(22, 'fff', '$2y$10$NkbDP/gvUfoIH', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 11:08:50', '2021-10-15 11:08:50'),
-(23, 'sss', '$2y$10$zkMvveMbO00LX', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 11:44:37', '2021-10-15 11:44:37'),
-(24, 'sss', '$2y$10$m2dH.8J2zBOmU', '123123', 'Yu Vega', 'Anthony', 'R.', '2-cs', 1234567890, 'Regular', 1, '2021-10-15 11:46:45', '2021-10-15 11:46:45'),
-(25, 'bbb', '$2y$10$aY209SMP5Dm7dZiNZwqUxOh0X1DhsCxuiq8CgVKPRNvKJUsQTz50a', '123123', 'Yu Vega', 'Anthony', 'R.', '22', 1234567890, 'Regular', 1, '2021-10-15 11:55:45', '2021-10-15 11:55:45'),
-(26, 'adf', '$2y$10$pocUwTPhBkBG2TZM1AbZ0.biPIJmI3q5ccQ22nJHlH5q1flQBiWTi', '12313123', 'Yu Vega', 'Anthony', 'R.', '22', 1234567890, 'Regular', 1, '2021-10-17 01:09:51', '2021-10-17 01:09:51');
+(10, 'anthony', '$2y$10$A3Xl0KKl2JzIOhVdN8.7n.LltW9iXPBPVhUUETHYxJW/0jUZDg2Xm', '12312312', 'anthonyffaa', 'rosalesaaass', 'yuvegaaaafa', '2-c', 2123123, 'Irregular', 1, '2021-10-20 06:50:47', '2021-10-20 08:36:29');
 
 -- --------------------------------------------------------
 
@@ -218,7 +217,7 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `studentgrades`
@@ -230,7 +229,7 @@ ALTER TABLE `studentgrades`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `subjects`
