@@ -44,6 +44,14 @@
         <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;"
         type="submit" name="register" value="Sign up">
     </form>
+
+    <script type="text/javascript">
+    // Callback
+    window.onbeforeunload = function(e) {
+        // Turning off the event
+        e.preventDefault();
+    }
+</script>
     
 </body>
 </html>
@@ -55,12 +63,13 @@ if(isset($_POST['register'])){
         $Date = date('Y-m-d H:i:s');
         $Username = $_POST['username'];
         $Password = $_POST['password'];
+        $hash = password_hash($Password, algo:PASSWORD_BCRYPT);
         $Firstname = $_POST['firstname'];
         $Middlename = $_POST['middlename'];
         $Lastname = $_POST['lastname'];
         $Year = $_POST['year'];
 
-        $Query = "INSERT INTO `professor`(Username,Password,Firstname,Middlename,Lastname,Year,DateTimeCreated) VALUES ('$Username','$Password','$Firstname','$Middlename','$Lastname','$Year','$Date')";
+        $Query = "INSERT INTO `professor`(Username,Password,Firstname,Middlename,Lastname,Year,DateTimeCreated) VALUES ('$Username','$hash','$Firstname','$Middlename','$Lastname','$Year','$Date')";
         if($sql = mysqli_query($conn,$Query)){
             echo "<script>alert('Record inserted');</script>";
 
