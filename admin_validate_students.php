@@ -18,7 +18,7 @@
             foreach($Sql as $results){
                 $val = $results['Valid'];
                 ?>
-                <form action="demo.php" method="POST">
+                <form action="validate_script.php" method="POST">
                 <input type="hidden" name="edit_id" value="<?php echo $results['ID'];?>">
                 <input type="checkbox"  onclick="selectOnlyThis(this)" name="valid" id="val" value="1"  <?=($val == 1) ? "checked" : "" ?>> Valid <br>
                 <input type="checkbox"  onclick="selectOnlyThis(this)" name="valid"  id="val" value="0" <?=($val == 0) ? "checked" : "" ?>> Not Valid <br> 

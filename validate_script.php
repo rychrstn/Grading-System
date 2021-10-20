@@ -6,6 +6,7 @@ include('connection.php');
 
         $Valid = "UPDATE `students` SET `Valid` = '$Validate' WHERE `ID` = '$id'";
         if($Sql = mysqli_query($conn,$Valid)){
+            header('Location:students_records.php');
 
     }else{
         echo "ERROR.";
