@@ -45,12 +45,14 @@
                 <label> Student Status</label>
                 <select name="editstudentstatus">
                     <?php
-                    if($results ['StudentStatus']){
+                    if($results['StudentStatus'] == 'Regular'){
                         echo "<option>Regular</option>";
+                      
+                    }
+                    ?>
+                    <?php
+                    if($results['StudentStatus'] == 'Irregular'){
                         echo "<option>Irregular</option>";
-                    }else{
-                        echo "<option>Irregular</option>";
-                        echo "<option>Regular</option>";
                     }
                     ?>
                 </select>
