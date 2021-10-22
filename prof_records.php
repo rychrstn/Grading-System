@@ -18,6 +18,8 @@
                             <th>Middlename</th>
                             <th>Lastname</th>
                             <th>Year</th>
+                            </form>
+                            <a href="subjects.php"> adsf</a>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,7 +31,7 @@
                             while($rows = mysqli_fetch_array($sql)){
                         ?>
                         <tr>
-                        <td><?php echo $rows['ID'];?></td>
+                        <td><?php echo $rows['id'];?></td>
                         <td><?php echo $rows['Username'];?></td>
                         <td><?php echo $rows['Password'];?></td>
                         <td><?php echo $rows['Firstname'];?></td>
@@ -37,13 +39,13 @@
                         <td><?php echo $rows['Lastname'];?></td>
                         <td><?php echo $rows['Year'];?></td>
                         <td>
-                            <form action="try.php" method="POST">
-                                <input type="hidden" name="subjectid" value="<?php echo $rows['ID']?>">
+                            <form action="prof_subject.php" method="POST">
+                                <input type="hidden" name="subjectid" value="<?php echo $rows['id']?>">
                                 <input type="submit" name="subject" value="subject">
-                            </form>
-                            <a href="try.php?id=<?php echo $rows['ID'];?>" name="subject" class="badge badge-info">Add Subject </a>
-                            <a href="delete.php?id=<?php echo $rows['ID']?>" class="badge badge-danger">Delete</a>
-                            <a href="edit.php?id=<?php echo $rows['ID']?>" class="badge badge-sucess"> Edit </a>
+                           
+                            <a href="try.php?id=<?php echo $rows['id'];?>" name="subject" class="badge badge-info">Add Subject </a>
+                            <a href="delete.php?id=<?php echo $rows['id']?>" class="badge badge-danger">Delete</a>
+                            <a href="edit.php?id=<?php echo $rows['id']?>" class="badge badge-sucess"> Edit </a>
                         </td>
                         </tr>
                         <?php

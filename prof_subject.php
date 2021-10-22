@@ -7,64 +7,54 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-include ('connection.php');
-if(isset($_POST['subject'])){
-    $Prof_id = $_POST['subjectid'];
-    $SelectID = "SELECT * FROM professor where `ID` = '$Prof_id'";
-    $sql = mysqli_query($conn, $SelectID);
-    if(mysqli_num_rows($sql)> 0 ){
-        foreach($sql as $result){
+    <?php 
+    require('connection.php');
+    if(isset($_POST['subject'])){
+        $Prof_id = $_POST['subjectid'];
+        $SelectProf = "SELECT * FROM `professor` WHERE `id` = '$Prof_id'";
+        $Sql = mysqli_query($conn, $SelectProf);
+        foreach($Sql as $Result){
+            ?>
 
+       <form action="" method="POST">
+            <input type="hidden" name="prof_id" value="<?php echo $Prof_id?>">
+                <label>Subject Code</label>
+                <input type="text" name="subjectcode">
+                <br>
+                <label>Subject Name </label>
+                <input type="text" name="subjectname">
+                <br>
+                <label>Unit</label>
+                <input type="number" name="unit">
+                <br>
+
+                <input type="submit" name="register" value="register">
+
+            </form>
+            <?php
+        }
+    }
     ?>
-    <input type="hidden" name="prof_id" value="<?php echo $result['ID'] ?>">
-        <?php
-        require ('connection.php');
-        $Select = "SELECT * FROM subjects";
-        $sql = mysqli_query($conn,$Select);
-        if($sql->num_rows>0){
-            while($row=mysqli_fetch_array($sql)){
 
-                $sub_id = $row['id'];
-                ?>
-                <select name="subject">
-                    <option value="" selected disabed hidden> Select Subject </option>
-
-                    <option value="<?php echo $row['id'];?>"><?php echo $row['SubjectCode'];?></option>
-                    <?php
-            }
-        }
-        ?>
-                    
-                </select>
-                
-                    
-
-          
-        <input type="submit" name="register" value="register">
-    </form>
-    <?php
-        }
-     }
- }
-        ?>
 </body>
 </html>
-<?php 
+<?php
+require('connection.php');
 if(isset($_POST['register'])){
-    $prof_id = $_POST['edit_id'];
-            
-    $Query = "UPDATE `subjects` SET `Prof_id` = '$prof_id' WHERE `id` =  '$Prof_id'";
-    if($Sql = mysqli_query($conn,$Query)){
-        echo"<script>alert('record added');</script>";
-    }else{
-        echo "ERROR".$Sql."<br>".$conn->error;
+    $Prof_id = $_POST['prof_id'];
+    $SubjectCode = $_POST['subjectcode'];
+    $SubjectName = $_POST['subjectname'];
+    $Unit = $_POST['unit'];
+    $Date = date_default_timezone_set('Asia/Manila');
+    $Date = date('Y-m-d H:i:s');
 
+    $Query = "INSERT INTO subjects(Prof_id, SubjectCode, SubjectName, Unit, DateTimeCreated) VALUES ('$Prof_id', '$SubjectCode', '$SubjectName', '$Unit', '$Date')";
+    if($Sql = mysqli_query($conn, $Query)){
+        echo "inserted";
+
+    }else{
+        echo "error";
     }
 
-
 }
-
-echo "test";
-
 ?>
