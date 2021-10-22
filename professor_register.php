@@ -22,7 +22,7 @@
         <br>
         
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" name="password" placeholder="Password" required>
+        type="password" name="password" placeholder="Password" required>
         <i class="fas fa-lock"></i>
         <br>
         
@@ -43,6 +43,9 @@
         <br>
         <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;"
         type="submit" name="register" value="Sign up">
+        <div style="font-family: monospace; font-size: 15px;">Already have an Account?</div> 
+        <a style="text-decoration: none; color: #1EA4E3;
+        font-family: monospace; font-size: 15px" href="prof_login.php">Click here to Login</a>
     </form>
 
     <script type="text/javascript">
