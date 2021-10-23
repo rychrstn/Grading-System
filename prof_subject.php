@@ -50,7 +50,7 @@ if(isset($_POST['register'])){
 
     $Query = "INSERT INTO subjects(Prof_id, SubjectCode, SubjectName, Unit, DateTimeCreated) VALUES ('$Prof_id', '$SubjectCode', '$SubjectName', '$Unit', '$Date')";
     if($Sql = mysqli_query($conn, $Query)){
-        echo "inserted";
+        header('Location:prof_records.php');
 
     }else{
         echo "error";

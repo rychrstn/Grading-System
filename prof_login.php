@@ -34,6 +34,10 @@ if(isset($_POST['login'])){
     if($Sql->num_rows > 0 ){
         $row = mysqli_fetch_assoc($Sql);
         $_SESSION['firstname'] = $row['Firstname'];
+        $_SESSION['middlename'] = $row['Middlename'];
+        $_SESSION['lastname'] = $row['Lastname'];
+        $_SESSION['year'] = $row['Year'];
+        $_SESSION['id'] = $row['id'];
         if(!password_verify($Password, $row['Password'])){
             echo "Incorrect Password";
         }else{

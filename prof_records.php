@@ -42,6 +42,7 @@
                             <form action="prof_subject.php" method="POST">
                                 <input type="hidden" name="subjectid" value="<?php echo $rows['id']?>">
                                 <input type="submit" name="subject" value="subject">
+                            </form>
                            
                             <a href="try.php?id=<?php echo $rows['id'];?>" name="subject" class="badge badge-info">Add Subject </a>
                             <a href="delete.php?id=<?php echo $rows['id']?>" class="badge badge-danger">Delete</a>
