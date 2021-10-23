@@ -82,7 +82,7 @@ if(isset($_POST['login'])){
                         echo "<div class = FieldError><p>You're not yet validated</p></div>";
                         }
                         }else{
-                        echo "<div class = FieldError1><p>Wrong Password!</p></div>";
+                        echo "<div class = FieldError1><p>Incorrect Password!</p></div>";
                         }
             }else{
                 echo "<div class = FieldError2><p>Account do not Exist!</p></div>";

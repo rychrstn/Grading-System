@@ -14,7 +14,11 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
     <title>Document</title>
 </head>
 <body>
+<<<<<<< HEAD
    <!-- sidebar -->
+=======
+    <h1>test</h1>
+>>>>>>> ff8ea501dfc664800b18aed7ee2d6b13acbf3efd
     <p> Prof: <?php echo  $_SESSION['firstname']. $_SESSION['middlename'] . $_SESSION['lastname'] ?></p>
     
     
