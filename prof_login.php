@@ -14,12 +14,29 @@
         </section>
     <form action="" method="POST">
     <div class="textboxdiv">
-    <div class="title"><h1>The Univerity of Manila</h1>
+    <div class="title"><h1>The University of Manila</h1>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
     </div>
     <i class="fas fa-user-tie"></i>
     <br>
-    <p style="position: fixed; padding-left: 616px; padding-top: 25px; font-weight: bold;">Welcome Professor!</p>
+    <select onchange="la(this.value)" name="terms" id="terms">
+        <option selected disabled>Login As</option>
+        <option value="student_login.php">Student</option>
+    </select>
+    <script>
+
+        function la(src) {
+            window.location=src;
+        }
+        /*var urlMenu = document.getElementById('terms');
+        urlMenu.onchange = function()
+        {
+            var useroption = this.options[this.selectedIndex];
+            if (useroption.value != "nothing"){
+                window.open(useroption.value,"Professor","");
+            }
+        }*/
+    </script>
     <br>
     <br>
     <br>
@@ -77,7 +94,7 @@ if(isset($_POST['login'])){
         $_SESSION['middlename'] = $row['Middlename'];
         $_SESSION['lastname'] = $row['Lastname'];
         $_SESSION['year'] = $row['Year'];
-        $_SESSION['id'] = $row['id'];
+        $_SESSION['id'] = $row['ID'];
         if(!password_verify($Password, $row['Password'])){
             echo "<div class = FieldError1><p>Incorrect Password!</p></div>";
         }else{

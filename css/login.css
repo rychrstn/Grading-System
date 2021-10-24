@@ -6,7 +6,11 @@
     font-family:monospace;
 }
 
-
+body {
+    background: #3CA55C;
+background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C);
+background: linear-gradient(to right, #B5AC49, #3CA55C);
+}
 .title {
         text-align: center;
         padding-top: 100px;
@@ -80,4 +84,18 @@ input {
     color: red;
     font-size: 15px;
     position: fixed;
+}
+
+i {
+    position: fixed;
+    font-size: 40px;
+    margin-left: -70px;
+}
+
+#terms {
+    position: fixed;
+    margin-top: 0px;
+    margin-left: -20px;
+    border-radius: 20px;
+    border: 1px solid rgb(46, 224, 46);
 }

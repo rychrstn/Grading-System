@@ -6,12 +6,6 @@
     font-family:monospace;
 }
 
-body {
-    background: #3CA55C;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #B5AC49, #3CA55C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
 
 .title {
         text-align: center;
@@ -64,13 +58,21 @@ input {
     margin-top: 15px;
 }
 
+.FieldError {
+    margin: 335px;
+    padding-left: 240px;
+    color: red;
+    font-size: 15px;
+    position: fixed;
+}
+
 .FieldError1 {
     margin: 335px;
     padding-left: 265px;
     color: red;
     font-size: 15px;
     position: fixed;
-    
+    margin-top: 305px;
 }
 
 .FieldError2 {
@@ -84,13 +86,5 @@ input {
 i {
     position: fixed;
     font-size: 40px;
-    margin-left: -70px;
-}
-
-#terms {
-    position: fixed;
-    margin-top: 0px;
     margin-left: -20px;
-    border-radius: 20px;
-    border: 1px solid rgb(46, 224, 46);
 }
