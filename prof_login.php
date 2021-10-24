@@ -76,7 +76,7 @@ if(isset($_POST['login'])){
         $_SESSION['middlename'] = $row['Middlename'];
         $_SESSION['lastname'] = $row['Lastname'];
         $_SESSION['year'] = $row['Year'];
-        $_SESSION['id'] = $row['id'];
+        $_SESSION['id'] = $row['ID'];
         if(!password_verify($Password, $row['Password'])){
             echo "<div class = FieldError1><p>Incorrect Password!</p></div>";
         }else{
