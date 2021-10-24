@@ -6,7 +6,11 @@
     font-family:monospace;
 }
 
-
+body {
+    background: #3CA55C;
+background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C);
+background: linear-gradient(to right, #B5AC49, #3CA55C);
+}
 .title {
         text-align: center;
         padding-top: 100px;

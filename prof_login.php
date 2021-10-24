@@ -14,7 +14,7 @@
         </section>
     <form action="" method="POST">
     <div class="textboxdiv">
-    <div class="title"><h1>The Univerity of Manila</h1>
+    <div class="title"><h1>The University of Manila</h1>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
     </div>
     <i class="fas fa-user-tie"></i>
