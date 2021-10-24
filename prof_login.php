@@ -19,7 +19,24 @@
     </div>
     <i class="fas fa-user-tie"></i>
     <br>
-    <p style="position: fixed; padding-left: 616px; padding-top: 25px; font-weight: bold;">Welcome Professor!</p>
+    <select onchange="la(this.value)" name="terms" id="terms">
+        <option selected disabled>Login As</option>
+        <option value="student_login.php">Student</option>
+    </select>
+    <script>
+
+        function la(src) {
+            window.location=src;
+        }
+        /*var urlMenu = document.getElementById('terms');
+        urlMenu.onchange = function()
+        {
+            var useroption = this.options[this.selectedIndex];
+            if (useroption.value != "nothing"){
+                window.open(useroption.value,"Professor","");
+            }
+        }*/
+    </script>
     <br>
     <br>
     <br>

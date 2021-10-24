@@ -81,3 +81,17 @@ input {
     font-size: 15px;
     position: fixed;
 }
+
+i {
+    position: fixed;
+    font-size: 40px;
+    margin-left: -70px;
+}
+
+#terms {
+    position: fixed;
+    margin-top: 0px;
+    margin-left: -20px;
+    border-radius: 20px;
+    border: 1px solid rgb(46, 224, 46);
+}

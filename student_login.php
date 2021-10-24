@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Login</title>
     <link rel="stylesheet" href="css/login.css">
+    <script src="https://kit.fontawesome.com/d29cb4cf2b.js" crossorigin="anonymous"></script>
 </head>
 </html>
     <?php
@@ -31,6 +32,26 @@
     <div class="title"><h1>The Univerity of Manila</h1>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
     </div>
+    <i class="fas fa-user-graduate"></i>
+    <br>
+    <select onchange="la(this.value)" name="terms" id="terms">
+        <option selected disabled>Login As</option>
+        <option value="prof_login.php">Professor</option>
+    </select>
+    <script>
+
+        function la(src) {
+            window.location=src;
+        }
+        /*var urlMenu = document.getElementById('terms');
+        urlMenu.onchange = function()
+        {
+            var useroption = this.options[this.selectedIndex];
+            if (useroption.value != "nothing"){
+                window.open(useroption.value,"Professor","");
+            }
+        }*/
+    </script>
     <br>
     <br>
     <br>
