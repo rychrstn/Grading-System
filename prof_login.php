@@ -72,6 +72,7 @@ if(isset($_POST['login'])){
     $Sql = $conn->query($Query);
     if($Sql->num_rows > 0 ){
         $row = mysqli_fetch_assoc($Sql);
+        $_SESSION['username'] = $row['Username'];
         $_SESSION['firstname'] = $row['Firstname'];
         $_SESSION['middlename'] = $row['Middlename'];
         $_SESSION['lastname'] = $row['Lastname'];
