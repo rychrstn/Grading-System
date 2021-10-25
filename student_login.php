@@ -33,25 +33,8 @@
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
     </div>
     <i class="fas fa-user-graduate"></i>
+    <p style="position:fixed; margin-top: 40px; margin-left: 630px;">Welcome Student!</p>
     <br>
-    <select onchange="la(this.value)" name="terms" id="terms">
-        <option selected disabled>Login As</option>
-        <option value="prof_login.php">Professor</option>
-    </select>
-    <script>
-
-        function la(src) {
-            window.location=src;
-        }
-        /*var urlMenu = document.getElementById('terms');
-        urlMenu.onchange = function()
-        {
-            var useroption = this.options[this.selectedIndex];
-            if (useroption.value != "nothing"){
-                window.open(useroption.value,"Professor","");
-            }
-        }*/
-    </script>
     <br>
     <br>
     <br>

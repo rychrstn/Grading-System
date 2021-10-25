@@ -18,25 +18,8 @@
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
     </div>
     <i class="fas fa-user-tie"></i>
+    <p style="position:fixed; margin-top: 40px; margin-left: 620px;">Welcome Professor!</p>
     <br>
-    <select onchange="la(this.value)" name="terms" id="terms">
-        <option selected disabled>Login As</option>
-        <option value="student_login.php">Student</option>
-    </select>
-    <script>
-
-        function la(src) {
-            window.location=src;
-        }
-        /*var urlMenu = document.getElementById('terms');
-        urlMenu.onchange = function()
-        {
-            var useroption = this.options[this.selectedIndex];
-            if (useroption.value != "nothing"){
-                window.open(useroption.value,"Professor","");
-            }
-        }*/
-    </script>
     <br>
     <br>
     <br>

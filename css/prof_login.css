@@ -84,13 +84,6 @@ input {
 i {
     position: fixed;
     font-size: 40px;
-    margin-left: -70px;
+    margin-left: -20px;
 }
 
-#terms {
-    position: fixed;
-    margin-top: 0px;
-    margin-left: -20px;
-    border-radius: 20px;
-    border: 1px solid rgb(46, 224, 46);
-}
