@@ -27,42 +27,58 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
     <h2><?php echo $_SESSION['id']?></h2>
     <i class="far fa-user-circle"></i>
     <h2 class = "profname"><?php echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname'] ?></h2>
-    <input type="hidden" name="prof_id" value="<?php echo $_SESSOIN['id']?>>">
     <h2 class="year"><?php echo $_SESSION['year'];?></h2>
-    <!--<h2><?php echo $_SESSION['id']?></h2>-->
-    <select class="term" name="terms">
-        <option selected disabled>Select term </option>
-        <option value="prelims">Prelims</option>
-        <option value="midterms">Midterms</option>
-        <option value="finals">Finals</option>
-    </select>
-    
-    <?php
-    $profid = ['prof_id'];
-    $SelectSub  = "SELECT * FROM subjects WHERE Prof_id = '".$_SESSION['id']."'";
-    $Run = mysqli_query($conn, $SelectSub);
-    if($Row = mysqli_num_rows($Run)> 0 ){
-            ?>
-
-            <select>
-                <option selected disabled> Select Subject </option>
-                <?php   while($Row = mysqli_fetch_array($Run)){ ?>
-                    <option value="<?php echo $Row['Prof_id']?>"><?php echo $Row['SubjectCode'];?></option>
-          
-
-            <?php
-        }
-
-    }
- 
-
-    ?>
-      </select>
-
     <form action="grades.php" method="POST">
-        <input type="hidden" name="prof_id" value="<?php echo $Profid ?>">
-        <input type="submit" name="grades" value="Input grades">
+        <input type="hidden" name="profid" value="<?php echo $_SESSION['id']?>">
+        <input type="submit" name="grades" value="input grades">
     </form>
-   
+        <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Middlename</th>
+                <th>Lastname</th>
+                <th>Grades</th>
+                <th>Term</th>
+
+            </tr>  
+        </thead>
+        <tbody>
+            <?php
+            include('connection.php');
+            $Select = "SELECT students.Firstname, students.ID, students.Middlename, students.Lastname, grades.Grades, grades.Term, grades.id FROM students LEFT JOIN grades ON Grades.id = students.ID";
+            $Sql = mysqli_query($conn, $Select);
+            if($Row = mysqli_num_rows($Sql)> 0 ){
+                while($Row = mysqli_fetch_array($Sql)){
+                    $Firstname = $Row['Firstname'];
+
+                    ?>
+                    <tr>
+                        <td><?php echo $Row['ID'];?></td>
+                        <td><?php echo $Firstname;?></td>
+                        <td><?php echo $Row['Middlename'];?></td>
+                        <td><?php echo $Row['Lastname'];?></td>
+                        <td><?php echo $Row['Grades']?></td>
+                        <td><?php echo $Row['Term']?></td>
+                        <td> 
+                            <form action="demo.php" method="POST">
+                                <input type="hidden" name="studentid" value="<?php echo $Row['ID']?>">
+                                <input type="hidden" name="gradeid" value="<?php echo $Row['id']?>">
+                                <input type="submit" name="submit" value="submit grade">
+                                
+                            </form>
+                        </td>
+
+                    </tr>
+                    <?php
+                }
+            } 
+        
+            ?>
+        </tbody>
+        </table>
+
+            
 </body>
 </html>
