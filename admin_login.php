@@ -12,7 +12,7 @@
 <section>
     <div class="box"></div>
         </section>
-    <form action="" method="POST">
+    
     <div class="textboxdiv">
     <div class="title"><h1>The Univerity of Manila</h1>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="120" width="140"></a>
@@ -24,6 +24,7 @@
     <br>
     <br>
     <div>
+    <form action="" method="POST">
         <input style="border: 2px solid lightgreen; font-size: 20px"
         type="text" name="username" placeholder="Username">
         <br>
@@ -62,6 +63,7 @@
 </body>
 </html>
 <?php
+include('connection.php');
  if(isset($_POST['login'])){
     $Username = mysqli_real_escape_string($conn,$_POST['username']);
     $Password = mysqli_real_escape_string($conn,$_POST['password']);
@@ -70,13 +72,13 @@
         echo "<script>alert('empty input field');</script>";
 
     }else{
-        $Query = "SELECT * FROM admin Where Username = '$Username' And Password = '$Password'";
+        $Query = "SELECT * FROM `admin` WHERE `Username` = '$Username' AND `Password` = '$Password'";
         $sql = mysqli_query($conn,$Query);
 
         if(mysqli_num_rows($sql)> 0 ){
             echo "Hello";
         }else{
-            echo "Not hello".$sql."<br>".$conn->error;
+            echo "Not hello";
 
         }
     }
