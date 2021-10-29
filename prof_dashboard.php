@@ -25,7 +25,7 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
     <h2><?php echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname'] ?></h2>
     <h2><?php echo $_SESSION['year'];?></h2>
     <h2><?php echo $_SESSION['id']?></h2>
-    <i class="far fa-user-circle"></i>
+    <i class="fas fa-user-tie"></i>
     <h2 class = "profname"><?php echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname'] ?></h2>
     <input type="hidden" name="prof_id" value="<?php echo $_SESSOIN['id']?>>">
     <h2 class="year"><?php echo $_SESSION['year'];?></h2>

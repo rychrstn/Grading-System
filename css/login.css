@@ -7,9 +7,9 @@
 }
 
 body {
-    background: #3CA55C;
+   /** background: #3CA55C;
 background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C);
-background: linear-gradient(to right, #B5AC49, #3CA55C);
+background: linear-gradient(to right, #B5AC49, #3CA55C); */
 }
 .title {
         text-align: center;
