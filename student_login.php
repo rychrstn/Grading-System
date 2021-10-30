@@ -74,14 +74,14 @@ if(isset($_POST['login'])){
                 $row = mysqli_fetch_assoc($Sql);
                 $_SESSION['username'] = $row['Username'];
                     if(password_verify($Password , $row['Password'])){
-                        if($Bool == 1){
-                            header('location:index.php');
-                        }else{
+                      if($Bool == 1){
+                          header('location:index.php');
+                      } else {
                         echo "<div class = FieldError><p>You're not yet validated</p></div>";
-                        }
-                        }else{
-                        echo "<div class = FieldError1><p>Incorrect Password!</p></div>";
-                        }
+                      }
+                    } else {
+                      echo "<div class = FieldError1><p>Incorrect Password!</p></div>";
+                    }
             }else{
                 echo "<div class = FieldError2><p>Account do not Exist!</p></div>";
             }
