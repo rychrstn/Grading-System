@@ -39,46 +39,105 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
                 <th>Firstname</th>
                 <th>Middlename</th>
                 <th>Lastname</th>
+                <th>StudentID</th>
                 <th>Grades</th>
                 <th>Term</th>
 
             </tr>  
         </thead>
         <tbody>
+        <table>
+        <thead>
+            <tr>
+                <th>Student's Name</th>
+                <th>StudentID</th>
+                <th>Subject</th>
+                <th>Term</th>
+            </tr>
+</thead>
+            <tbody>
             <?php
             include('connection.php');
-            $Select = "SELECT students.Firstname, students.ID, students.Middlename, students.Lastname, grades.Grades, grades.Term, grades.id FROM students LEFT JOIN grades ON Grades.id = students.ID";
+            $Select = "SELECT students.ID,students.StudentID,students.YearAndCourse, concat(students.Firstname, ' ', students.Middlename, ' ', students.Lastname) as Student FROM students";
             $Sql = mysqli_query($conn, $Select);
             if($Row = mysqli_num_rows($Sql)> 0 ){
                 while($Row = mysqli_fetch_array($Sql)){
-                    $Firstname = $Row['Firstname'];
-
                     ?>
                     <tr>
                         <td><?php echo $Row['ID'];?></td>
-                        <td><?php echo $Firstname;?></td>
-                        <td><?php echo $Row['Middlename'];?></td>
-                        <td><?php echo $Row['Lastname'];?></td>
-                        <td><?php echo $Row['Grades']?></td>
-                        <td><?php echo $Row['Term']?></td>
-                        <td> 
-                            <form action="demo.php" method="POST">
+                        <td><?php echo $Row['Student']?></td>
+                        <td><?php echo $Row['StudentID'];?></td>
+                        <td><?php echo $Row['YearAndCourse'];?></td>
+                        <td>
+                            <form action="" method="GET">
                                 <input type="hidden" name="studentid" value="<?php echo $Row['ID']?>">
-                                <input type="hidden" name="gradeid" value="<?php echo $Row['id']?>">
-                                <input type="submit" name="submit" value="submit grade">
-                                
+                                <?php
+                                include('connection.php');
+                                $SelectSub ="SELECT * FROM subjects";
+                                $sql = mysqli_query($conn,$SelectSub);
+                                if(mysqli_num_rows($sql)> 0 ) {
+                                    ?>
+                                    <select name="subject">
+                                        <option selected disabled>Select Subject</option>
+                                        <?php while($row = mysqli_fetch_array($sql)){?>
+                                            <option value="<?php echo $row['id'];?>"><?php echo $row['SubjectCode'];?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                <?php  
+                                }
+                                ?>
+                                <td>
+                                <input type="text" name="grades" >
+                                <select name="term">
+                                    <option selected disabled>Select term</option>
+                                    <option value="Prelims">Prelims</option>
+                                    <option value="Midterm">Midterm</option>
+                                    <option value="Finals">Finals</option>
+                                </select>
+                                <?php $remark ?>
+                                <input type="hidden" name="remark">
+                                <input type="submit" name="grade" value="Submit">
+                                </td>
                             </form>
                         </td>
-
-                    </tr>
-                    <?php
+<?php
                 }
-            } 
-        
-            ?>
+            }
+            ?></tr>
         </tbody>
-        </table>
 
+        </table>
             
 </body>
 </html>
+<?php 
+$remark ="";
+include('connection.php');
+if(isset($_GET['grade'])){
+    $Profid = $_SESSION['id'];
+    $Studentid = $_GET['studentid'];
+    $Grades = $_GET['grades'];
+    $Subjectid = $_GET['subject'];
+    $Term = $_GET['term'];
+    $Remark =  $_GET['remark'];
+    $Date = date_default_timezone_set('Asia/Manila');
+     $Date = date('Y-m-d H:i:s');
+     
+    if($Grades <= "99"  &&  $Grades >= "75"){
+        $Remark = "Passed";
+    }else{
+        $Remark ="Failed";
+    }
+
+
+     $Insert = "INSERT INTO grades(Prof_ID, Subject_ID, Student_ID, Grades, Term, Remarks, DateTimeCreated) VALUES ('$Profid','$Subjectid','$Studentid','$Grades', '$Term','$Remark','$Date')";
+     if($create = mysqli_query($conn, $Insert)){
+         echo "insert";
+     }else{
+         echo "error";
+     }
+    
+    }
+?>
