@@ -87,7 +87,7 @@ include 'connection.php';
         $bool = 0;
 
         $Sql_id = "SELECT * FROM `Students` WHERE StudentID = '$Studentid'";
-        $Sql_name ="SELECT * FROM Students WHERE Firstname = '$Firstname', Middlename = '$Middlename', Lastname = '$Lastname'";
+        $Sql_name ="SELECT * FROM Students WHERE Firstname = '$Firstname' AND Middlename = '$Middlename' AND  Lastname = '$Lastname'";
         $Res_name = mysqli_query($conn, $Sql_name);
         $Res_id = mysqli_query($conn , $Sql_id);
 
