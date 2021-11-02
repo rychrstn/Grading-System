@@ -7,136 +7,130 @@
     <title>Document</title>
 </head>
 <body>
+    <?php 
+    session_start();
+    include('connection.php');
+    if(isset($_GET['grades'])){
+       $_SESSION['id'];
+    }?>
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Firstname</th>
-                <th>Middlename</th>
-                <th>Lastname</th>
+                <th>Student's Name</th>
+                <th>StudentID</th>
+                <th>Subject</th>
+                <th>Term</th>
             </tr>
-            <tbody>
-            <?php
-            include('connection.php');
-            $Select = "SELECT * FROM students";
-            $Sql = mysqli_query($conn, $Select);
-            if($Row = mysqli_num_rows($Sql)> 0 ){
-                while($Row = mysqli_fetch_array($Sql)){
+</thead>
 
-                    ?>
-                    <tr>
-                        <td><?php echo $Row['ID'];?></td>
-                        <td><?php echo $Row['Firstname'];?></td>
-                        <td><?php echo $Row['Middlename'];?></td>
-                        <td><?php echo $Row['Lastname'];?></td>
-                        <td> 
-                            <form action="insert_grades.php" method="POST">
-                                <input type="submit" name="submit" value="submit">
+            <tbody>
+        <?php
+        include('connection.php');
+        $Select = "SELECT students.ID,students.StudentID,students.YearAndCourse, concat(students.Firstname, ' ', students.Middlename, ' ', students.Lastname) as Student FROM students";
+        $Sql = mysqli_query($conn, $Select);
+        if($Row = mysqli_num_rows($Sql)> 0 ){
+            while($Row = mysqli_fetch_array($Sql)){?>
+
+            <tr>
+                <td><?php echo $Row['ID'];?></td>
+                <td><?php echo $Row['Student']?></td>
+                <td><?php echo $Row['StudentID'];?></td>
+                <td><?php echo $Row['YearAndCourse'];?></td>
+                <td>
+                    <form action="" method="GET">
+                    <input type="hidden" name="studentid" value="<?php echo $Row['ID']?>">
+                    <?php
+                    include('connection.php');
+                    $SelectSub ="SELECT * FROM subjects";
+                    $sql = mysqli_query($conn,$SelectSub);
+                    if(mysqli_num_rows($sql)> 0 ) {?>
+                    <select name="subject">
+                    <option selected disabled>Select Subject</option>
+                                        <?php while($row = mysqli_fetch_array($sql)){?>
+                                            <option value="<?php echo $row['id'];?>"><?php echo $row['SubjectCode'];?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                <?php  
+                                }
+                                ?>
+                                <td>
+                                <input type="text" name="grades" >
+                                <select name="term">
+                                    <option selected disabled>Select term</option>
+                                    <option value="Prelims">Prelims</option>
+                                    <option value="Midterm">Midterm</option>
+                                    <option value="Finals">Finals</option>
+                                </select>
+                                <?php $remark ?>
+                                <input type="hidden" name="remark">
+                                <input type="submit" name="grade" value="Submit">
+                                </td>
                             </form>
-                    
-                </tr>
-            </tbody>
-            <?php
+                        </td>
+    <?php
                 }
             }
-
-
-            ?>
-        </thead>
-    </table>
-    
-    <?php
-    session_start();
-    include('connection.php');
-    if(isset($_POST['grades'])){
-        $Prof_id = $_SESSION['id'];
-        $SelectStudent = "SELECT * FROM professor WHERE id = '$Prof_id'";
-        $Sql = mysqli_query($conn, $SelectStudent);
-        if($Rows = mysqli_num_rows($Sql) > 0 ){
-            while($Rows = mysqli_fetch_array($Sql)){
-                ?>
-                <input type="hidden" name="student" value="<?php echo $Studentid;?>">
-<?php
-            }
-            ?>
-            <form action="" method="POST">
-                <label> Select Term </label>
-            <select class="term" name="terms">
-                    <option selected disabled>Select term </option>
-                    <option value="prelims">Prelims</option>
-                    <option value="midterms">Midterms</option>
-                    <option value="finals">Finals</option>
-                    <br>
-                </select>
-                <br>
-                <label> Grades:</label>
-                <input type="text" name="grades">
-                <br>
-                <label> Remarks </label>
-                <input type="text" name="remarks">
-                <br>
-                <?php
-
-                include('connection.php');
-                $SelectSub = "SELECT * FROM subjects WHERE Prof_id  ='".$_SESSION['id']."'";
-                $Run = mysqli_query($conn, $SelectSub);
-                if($Row = mysqli_num_rows($Run)> 0 ){
-    ?>
-    <select name="subject">
-        <option selected disabled> Select Subject</option>
-        <?php while($Row = mysqli_fetch_array($Run)){ ?>
-
-            <option value="<?php echo $Row['id'];?>"><?php echo $Row['SubjectCode'];?></option>
-            
-            <?php
-        }
-        ?>
-    </select>
-    <br>
-<?php
-}
-?>
-
-<input type="submit" name="submit" value="submit grades">
-            
-            </form>
-
-
-            <?php
-        }
-    }
-?>
-    
-<!-- student side -->
-         
-                
+            ?></tr>
         </tbody>
-    </table>
-    </form>
-</body>
-</html>
-<?php
-include('connection.php');
-if(isset($_POST['submit'])){
-    $Prof_id = $_SESSION['id'];
-    // $Studentid = $_POST['student_id'];
-    $Subjects = $_POST['subject'];
-    $Terms = $_POST['terms'];
-    $Grades = $_POST['grades'];
-    $Remarks = $_POST['remarks'];
+
+        </table>
+            
+    </body>
+    </html>
+    <?php 
+    $remark ="";
+    include('connection.php');
+    if(isset($_GET['grade'])){
+    $Profid = $_SESSION['id'];
+    $Studentid = $_GET['studentid'];
+    $Grades = $_GET['grades'];
+    $Subjectid = $_GET['subject'];
+    $Term = $_GET['term'];
+    $Remark =  $_GET['remark'];
     $Date = date_default_timezone_set('Asia/Manila');
     $Date = date('Y-m-d H:i:s');
-
-    $Query = "INSERT INTO grades (Prof_ID, Subject_ID, Grades, Term, Remarks, DateTimeCreated) VALUES ('$Prof_id','$Subjects', '$Grades', '$Terms', '$Remarks', '$Date')";
-    if($Sql = mysqli_query($conn, $Query)){
+        
+    if($Grades <= "99"  &&  $Grades >= "75"){
+        $Remark = "Passed";
     }else{
-        echo "error".$Sql."<br>".$conn->error;
+        $Remark ="Failed";
+    }
 
+    $Sql_grades = "SELECT * FROM grades WHERE Grades = '$Grades'";
+    $Sql_subjectid = "SELECT *FROM grades WHERE Subject_ID = '$Subjectid'";
+    $Sql_term = "SELECT * FROM grades WHERE Term = '$Term'";
+    $Res_grades = mysqli_query($conn, $Sql_grades);
+    $Res_subjectid = mysqli_query($conn , $Sql_subjectid);
+    $Res_Term = mysqli_query($conn, $Sql_term);
+
+
+    if(mysqli_num_rows($Res_grades) > 0 ) {
+        echo "You already Graded the student";
+    }else if (mysqli_num_rows($Res_subjectid)> 0 ) {
+        echo "This subjects is already graded";
+
+    }else if (mysqli_num_rows($Res_Term)> 0 ) { 
+        echo "This term is already graded";
+    }else{
+        $Insert = "INSERT INTO grades(Prof_ID, Subject_ID, Student_ID, Grades, Term, Remarks, DateTimeCreated) VALUES ('$Profid','$Subjectid','$Studentid','$Grades', '$Term','$Remark','$Date')";
+        if($create = mysqli_query($conn, $Insert)){
+            echo "<script>alert('successfully graded')</script>";
+            header('Location:prof_dashboard.php');
+        }else{
+            echo "error";
+        }
+    
     }
 }
-            
-        
+
+    ?>
+
     
-?>
+
+    
+        
+        
 
 
