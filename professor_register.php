@@ -66,7 +66,7 @@ if(isset($_POST['register'])){
         $Date = date('Y-m-d H:i:s');
         $Username = $_POST['username'];
         $Password = $_POST['password'];
-        $hash = password_hash($Password, algo:PASSWORD_BCRYPT);
+        $hash = password_hash($Password, PASSWORD_BCRYPT);
         $Firstname = $_POST['firstname'];
         $Middlename = $_POST['middlename'];
         $Lastname = $_POST['lastname'];

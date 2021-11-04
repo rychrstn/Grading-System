@@ -6,7 +6,7 @@ if(isset($_POST['update_students'])){
     $Date = date('Y-m-d H:i:s');
     $EditUsername = mysqli_real_escape_string($conn, $_POST['editusername']);
     $EditPassword = mysqli_real_escape_string($conn, $_POST['editpassword']);
-    $Password = password_hash($EditPassword , algo:PASSWORD_BCRYPT);
+    $Password = password_hash($EditPassword , PASSWORD_BCRYPT);
     $EditID  = mysqli_real_escape_string($conn, $_POST['editid']);
     $EditFirstname = mysqli_real_escape_string($conn, $_POST['editfirstname']);
     $EditMiddlename = mysqli_real_escape_string($conn, $_POST['editmiddlename']);
