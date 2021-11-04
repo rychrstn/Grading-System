@@ -56,12 +56,6 @@
         </div>
     </div>
     </form>
-
-
-</body>
-</html>
-    
-
 </body>
 </html>
 <?php

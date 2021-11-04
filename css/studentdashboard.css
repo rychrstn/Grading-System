@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family:monospace;
+}
+
+body{
+
+}
+
+.title {
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    display: flex;
+    flex-direction: end;
+    color: green;
+}
+
+.um_logo {
+    position: absolute;
+    top: 5%;
+    left: 6%;
+    display: flex;
+    flex-direction: end;
+    border-radius: 60%;
+}
+
+.info {
+    position: absolute;
+    top: 9%;
+    left: 15%;
+    font-size: 20px;
+}
+
+.student-icon {
+    position: absolute;
+    left: 80%;
+    top: 10%;
+    font-size: 60px;
+}
+
+.download {
+    position: absolute;
+    font-size: 30px;
+    top: 12%;
+    left: 77%;
+}
+
+.year {
+    position: absolute;
+    top: 13%;
+    left: 15%;
+    font-size: 20px;
+}

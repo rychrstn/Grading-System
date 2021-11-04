@@ -25,44 +25,53 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
     <h2><?php echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname'] ?></h2>
     <h2><?php echo $_SESSION['year'];?></h2>
     <h2><?php echo $_SESSION['id']?></h2>
-    <i class="far fa-user-circle"></i>
+    <i class="fas fa-user-tie"></i>
     <h2 class = "profname"><?php echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname'] ?></h2>
-    <input type="hidden" name="prof_id" value="<?php echo $_SESSOIN['id']?>>">
     <h2 class="year"><?php echo $_SESSION['year'];?></h2>
-    <!--<h2><?php echo $_SESSION['id']?></h2>-->
-    <select class="term" name="terms">
-        <option selected disabled>Select term </option>
-        <option value="prelims">Prelims</option>
-        <option value="midterms">Midterms</option>
-        <option value="finals">Finals</option>
-    </select>
-    
-    <?php
-    $profid = ['prof_id'];
-    $SelectSub  = "SELECT * FROM subjects WHERE Prof_id = '".$_SESSION['id']."'";
-    $Run = mysqli_query($conn, $SelectSub);
-    if($Row = mysqli_num_rows($Run)> 0 ){
-            ?>
-
-            <select>
-                <option selected disabled> Select Subject </option>
-                <?php   while($Row = mysqli_fetch_array($Run)){ ?>
-                    <option value="<?php echo $Row['Prof_id']?>"><?php echo $Row['SubjectCode'];?></option>
-          
-
-            <?php
-        }
-
-    }
- 
-
-    ?>
-      </select>
-
     <form action="grades.php" method="POST">
-        <input type="hidden" name="prof_id" value="<?php echo $Profid ?>">
-        <input type="submit" name="grades" value="Input grades">
+        <input type="hidden" name="profid" value="<?php echo $_SESSION['id']?>">
+        <input type="submit" name="grades" value="input grades">
     </form>
-   
-</body>
-</html>
+        <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Middlename</th>
+                <th>Lastname</th>
+                <th>StudentID</th>
+                <th>Grades</th>
+                <th>Term</th>
+                <tbody>
+                    <?php
+                 
+                    include('connection.php');
+                    $Select = "SELECT  a.StudentID,a.YearAndCourse, concat(a.Firstname, ' ', a.Middlename, ' ', a.Lastname) as Student,b.Grades, b.Term,c.SubjectCode, c.SubjectName,concat(d.Firstname, ' ', d.Middlename, ' ', d.Lastname) as Professor
+                FROM
+                students AS a
+                    JOIN
+                grades AS b ON b.Student_ID = a.ID
+                    JOIN
+                subjects c ON c.id = b.Subject_ID
+                    JOIN
+                professor AS  d ON d.id = b.Prof_ID
+
+                WHERE b.Prof_ID = '".$_SESSION['id']."'";
+                $Run = mysqli_query($conn, $Select);
+                while($Row = mysqli_fetch_assoc($Run)){
+                        ?>
+                        <tr>
+                        <td><?php echo $Row['Student'];?></td>
+                        <td><?php echo $Row['SubjectCode'];?></td>
+                        <td><?php echo $Row['Grades']?></td>
+                        <td><?php echo $Row['Term']?></td>
+
+
+<?php
+                    }
+                
+                ?>
+                 </tr>
+                </tbody>
+                </table>
+                

@@ -86,13 +86,26 @@ include 'connection.php';
         $Status = $_POST['status'];
         $bool = 0;
 
-        $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$hash','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
-        if($sql = mysqli_query($conn,$Query)){
-            echo"<script>alert('Record insert')</script>";
-        }
-            else{
-                echo'not inserted'.$sql."<br>".$conn->error;
+        $Sql_id = "SELECT * FROM `Students` WHERE StudentID = '$Studentid'";
+        $Sql_name ="SELECT * FROM Students WHERE Firstname = '$Firstname' AND Middlename = '$Middlename' AND  Lastname = '$Lastname'";
+        $Res_name = mysqli_query($conn, $Sql_name);
+        $Res_id = mysqli_query($conn , $Sql_id);
+
+
+        if(mysqli_num_rows($Res_id) >  0 ) {
+            echo "Sorry the Student ID is already registered";
+        }else if(mysqli_num_rows($Res_name) > 0 ){
+            echo "The name is already in our system";
+        }else{
+            $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$hash','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
+            if($sql = mysqli_query($conn,$Query)){
+                echo"<script>alert('Record insert')</script>";
+                header('register.php');
+            }
+                else{
+                    echo'not inserted'.$sql."<br>".$conn->error;
+                }
             }
         }
-        
-?>
+            
+    ?>
