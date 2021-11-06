@@ -7,6 +7,7 @@
     <title>Create Subjects</title>
 </head>
 <body>
+    <?php include('admin_dashboard.php');?>
     <form action="" method="POST">
         <label>Subject Code</label>
         <input type="text" name="subjectcode" id="">
@@ -31,16 +32,24 @@ include ('connection.php');
         $SubjectCode = $_POST['subjectcode'];
         $SubjectName = $_POST['subjectname'];
         $Unit = $_POST['unit'];
-
-        $Query = "INSERT INTO `subjects`(SubjectCode, SubjectName,Unit,DateTimeCreated) Values('$SubjectCode','$SubjectName','$Unit','$Date')";
-        if($sql = mysqli_query($conn,$Query)){
-            echo"<script>alert('Subject created successfully');</script>";
-
+        
+        $SelectSub = "SELECT * FROM `subjects` WHERE SubjectCode = '$SubjectCode'";
+        $SelectName = "SELECT * FROM `subjects` WHERE SubjectName = '$SubjectName'";
+        $Res_Name = mysqli_query($conn , $SelectName);
+        $Res_Sub = mysqli_query($conn , $SelectSub);
+        if(mysqli_num_rows($Res_Sub) > 0 ) {
+            echo "The Subject Code is already taken";
+        }else if (mysqli_num_rows($Res_Name) > 0 ){
+            echo "The Subject Name is already taken";
         }else{
-            echo "not insert".$sql ."<br>". $conn->error;
+            $Query = "INSERT INTO `subjects`(SubjectCode, SubjectName, Unit, DateTimeCreated) VALUES('$SubjectCode', '$SubjectName', '$Unit', '$Date')";
+            if($sql = mysqli_query($conn, $Query)){
+                echo"<script>alert('Subject created successfully');</script>";
+            }else{
+                echo "not insert".$sql ."<br>". $conn->error;
+            }
+
         }
     }
-
-    
 
 ?>

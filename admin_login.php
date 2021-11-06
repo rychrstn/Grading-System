@@ -35,10 +35,6 @@
         <br>
         <br>
         <input class="btnlogin" style="width: 100px; height: 50px; color: white; background-color:black; font-size: 20px;" type="submit" name="login" value="Login">
-        <div class="signup">
-			<div style="font-size: 15px;">Don't have an Account?</div>
-			<a style = "color: #1EA4E3; font-size: 15px;" href="professor_register.php">Click here to Sign up</a>
-		</div>
         </div>
     </div>
     </form>
@@ -63,6 +59,7 @@
 </body>
 </html>
 <?php
+session_start();
 include('connection.php');
  if(isset($_POST['login'])){
     $Username = mysqli_real_escape_string($conn,$_POST['username']);
@@ -74,9 +71,8 @@ include('connection.php');
     }else{
         $Query = "SELECT * FROM `admin` WHERE `Username` = '$Username' AND `Password` = '$Password'";
         $sql = mysqli_query($conn,$Query);
-
         if(mysqli_num_rows($sql)> 0 ){
-            echo "Hello";
+            header('Location:admin_dashboard.php');
         }else{
             echo "Not hello";
 

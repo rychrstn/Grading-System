@@ -6,10 +6,6 @@
     font-family:monospace;
 }
 
-body{
-
-}
-
 .title {
     position: absolute;
     top: 5%;
@@ -54,4 +50,54 @@ body{
     top: 13%;
     left: 15%;
     font-size: 20px;
+}
+
+.logout{
+    position: absolute;
+    top: 12%;
+    left: 90%;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color:black;
+    font-size: 15px;
+}
+
+.table-contents{
+    position: absolute;
+    border-collapse: collapse;
+    margin: 25px;
+    font-size: 0.9rem;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    top: 20%;
+    left: 30%;
+}
+
+.table-contents thead tr {
+    background-color: green;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table-contents th,
+.table-contents td {
+    padding: 12px 15px;
+}
+
+.table-contents tbody tr {
+    border-bottom: 1 px solid green;
+}
+
+.table-contents tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table-contents tbody tr:last-of-type {
+    border-bottom: 2px solid green;
 }

@@ -7,6 +7,7 @@
     <title>Student Validation</title>
 </head>
 <body>
+    <h1>Admin validate students </h1>
     <?php
 
     include ('connection.php');
