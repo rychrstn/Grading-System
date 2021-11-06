@@ -1,0 +1,9 @@
+.table {
+    min-height: 60vh;
+    flex: 5;
+    background: lightgreen;
+    margin: 0 25px 25px 25px;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
