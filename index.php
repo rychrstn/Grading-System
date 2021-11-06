@@ -27,7 +27,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <i class="fas fa-download"></i>
     </div>
     <button class="student_icon"><i class="far fa-user-circle"></i></div>
-    <div class="modal-container">
+    <div class="modal_container">
         <div class="modal">
     <h2>Student chuchu</h2>
     <p>Name: Khate Nabineg<br>

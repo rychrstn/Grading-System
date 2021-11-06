@@ -38,7 +38,7 @@
     font-size: 60px;
 }
 
-.modal-container {
+.modal_container {
     background-color: gray;
     align-items: center;
     justify-content: center;
@@ -52,7 +52,7 @@
     transition: opacity 0.3s ease;
 }
 
-.modal-container.show {
+.modal_container.show {
     pointer-events: auto;
     opacity: 1;
 }
