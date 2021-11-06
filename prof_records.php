@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/prof_records.css">
     <title>Professor's Records </title>
 </head>
 <body>
     
-<table class="table">
+<table class="table-contents">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -18,6 +19,7 @@
                             <th>Middlename</th>
                             <th>Lastname</th>
                             <th>Year</th>
+                            <th>Subjects</th>
                             </form>
                             <a href="subjects.php"></a>
                         </tr>
@@ -41,7 +43,7 @@
                         <td>
                             <form action="prof_subject.php" method="POST">
                                 <input type="hidden" name="subjectid" value="<?php echo $rows['id']?>">
-                                <input type="submit" name="subject" value="subject">
+                                <input type="submit" id = "subject" name="subject" value="subject">
                             </form>
                            
                             <a href="try.php?id=<?php echo $rows['id'];?>" name="subject" class="badge badge-info">Add Subject </a>
