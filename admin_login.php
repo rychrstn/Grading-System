@@ -59,6 +59,7 @@
 </body>
 </html>
 <?php
+session_start();
 include('connection.php');
  if(isset($_POST['login'])){
     $Username = mysqli_real_escape_string($conn,$_POST['username']);
@@ -70,9 +71,8 @@ include('connection.php');
     }else{
         $Query = "SELECT * FROM `admin` WHERE `Username` = '$Username' AND `Password` = '$Password'";
         $sql = mysqli_query($conn,$Query);
-
         if(mysqli_num_rows($sql)> 0 ){
-            echo "Hello";
+            header('Location:admin_dashboard.php');
         }else{
             echo "Not hello";
 

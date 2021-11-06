@@ -80,6 +80,7 @@
     </body>
     </html>
     <?php 
+    error_reporting(0);
     $remark ="";
     include('connection.php');
     if(isset($_GET['grade'])){
@@ -91,39 +92,27 @@
     $Remark =  $_GET['remark'];
     $Date = date_default_timezone_set('Asia/Manila');
     $Date = date('Y-m-d H:i:s');
+    
+    if(empty($Term) || empty($Grades) || empty($Subjectid)){
+        echo"You did not input something";
+        die();
+    }
         
     if($Grades <= "99"  &&  $Grades >= "75"){
         $Remark = "Passed";
     }else{
         $Remark ="Failed";
+        
     }
-
-    $Sql_grades = "SELECT * FROM grades WHERE Grades = '$Grades'";
-    $Sql_subjectid = "SELECT *FROM grades WHERE Subject_ID = '$Subjectid'";
-    $Sql_term = "SELECT * FROM grades WHERE Term = '$Term'";
-    $Res_grades = mysqli_query($conn, $Sql_grades);
-    $Res_subjectid = mysqli_query($conn , $Sql_subjectid);
-    $Res_Term = mysqli_query($conn, $Sql_term);
-
-
-    if(mysqli_num_rows($Res_grades) > 0 ) {
-        echo "You already Graded the student";
-    }else if (mysqli_num_rows($Res_subjectid)> 0 ) {
-        echo "This subjects is already graded";
-
-    }else if (mysqli_num_rows($Res_Term)> 0 ) { 
-        echo "This term is already graded";
-    }else{
         $Insert = "INSERT INTO grades(Prof_ID, Subject_ID, Student_ID, Grades, Term, Remarks, DateTimeCreated) VALUES ('$Profid','$Subjectid','$Studentid','$Grades', '$Term','$Remark','$Date')";
         if($create = mysqli_query($conn, $Insert)){
-            echo "<script>alert('successfully graded')</script>";
-            header('Location:prof_dashboard.php');
+            header('Location:grades.php');
         }else{
             echo "error";
         }
     
     }
-}
+
 
     ?>
 
