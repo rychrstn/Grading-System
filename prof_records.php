@@ -12,7 +12,7 @@
 <table class="table">
                 <thead>
                         
-                    <tr style="background: black; padding: 10px 1px; color: white;">
+                    <tr>
                         
                             <th>ID</th>
                             <th>Username</th>
