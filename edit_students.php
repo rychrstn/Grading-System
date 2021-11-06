@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/edit_students.css">
     <title>Document</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
                 <form action="update_students.php" method="POST">
                 <input type="hidden" name="edit_id" value="<?php echo $results['ID'];?>">
                 <label> Username </label>
-                <input type="text" name="editusername" value="<?php echo $results['Username'];?>">
+                <input class="uname" type="text" name="editusername" value="<?php echo $results['Username'];?>">
                 <br>
                 <label> Password </label>
                 <input type="password" name="editpassword" value="<?php  $results['Password'];?>">

@@ -14,6 +14,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d29cb4cf2b.js" crossorigin="anonymous"></script>   
     <link rel="stylesheet" href="css/studentdashboard.css">
+    <script type = "text/javascript" src="app.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -30,7 +31,15 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <div class = "download">
     <i class="fas fa-download"></i>
     </div>
-    <div class="student-icon"><i class="far fa-user-circle"></i></div>
+    <button class="student_icon"><i class="far fa-user-circle"></i></div>
+    <div class="modal_container">
+        <div class="modal">
+    <h2>Student chuchu</h2>
+    <p>Name: Khate Nabineg<br>
+       Year: 3rd Year College</p>
+    <button id="close">Back</button>
+        </div>
+    </div>
     <div>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="100" width="120">
     </div>
