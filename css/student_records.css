@@ -9,9 +9,8 @@
 .table-contents{
     position: absolute;
     top: 5%;
-    left: 9%;
     border-collapse: collapse;
-    margin: 25px;
+    margin: 15px;
     font-size: 0.9rem;
     min-width: 400px;
     border-radius: 5px 5px 0 0;
@@ -28,7 +27,7 @@
 
 .table-contents th,
 .table-contents td {
-    padding: 12px 20px;
+    padding: 12px 15px;
 }
 
 .table-contents tbody tr {
@@ -41,4 +40,26 @@
 
 .table-contents tbody tr:last-of-type {
     border-bottom: 2px solid green;
+}
+
+#update {
+    border-radius: 5px;
+    font-size: 15px;
+    background: #A1FFCE;
+    background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);
+    background: linear-gradient(to right, #FAFFD1, #A1FFCE); 
+}
+
+#validate {
+    border-radius: 5px;
+    font-size: 15px;
+    background: #A1FFCE;
+    background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  
+    background: linear-gradient(to right, #FAFFD1, #A1FFCE);
+}
+
+.badge{
+    text-decoration: underline;
+    font-size: 15px;
+    color: black;
 }

@@ -17,9 +17,12 @@
     <table class="table-contents">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Student's Name</th>
                 <th>StudentID</th>
+                <th>Year</th>
                 <th>Subject</th>
+                <th>Grade</th>
                 <th>Term</th>
             </tr>
 </thead>

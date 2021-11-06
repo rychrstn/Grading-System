@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/prof_records.css">
     <title>Professor's Records </title>
 </head>
 <body>
     
 <table class="table">
-                    <thead>
-                        <tr>
+                <thead>
+                        
+                    <tr>
+                        
                             <th>ID</th>
                             <th>Username</th>
                             <th>Password</th>
@@ -18,10 +21,11 @@
                             <th>Middlename</th>
                             <th>Lastname</th>
                             <th>Year</th>
-                            </form>
-                            <a href="subjects.php"></a>
-                        </tr>
-                    </thead>
+                        
+                            <a href="subjects.php"> adsf</a>
+                    </tr>
+                        
+                </thead>
                     <tbody>
                         <?php
                         include ('connection.php');
@@ -38,7 +42,7 @@
                         <td><?php echo $rows['Middlename'];?></td>
                         <td><?php echo $rows['Lastname'];?></td>
                         <td><?php echo $rows['Year'];?></td>
-                        <td>
+                        <td style="background: white;">
                             <form action="prof_subject.php" method="POST">
                                 <input type="hidden" name="subjectid" value="<?php echo $rows['id']?>">
                                 <input type="submit" name="subject" value="subject">
@@ -54,6 +58,7 @@
                         }
                         ?>
                     </tbody>
+                   
                 </table>
     
 </body>

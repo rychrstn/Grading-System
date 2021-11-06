@@ -35,13 +35,13 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
         <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Firstname</th>
-                <th>Middlename</th>
-                <th>Lastname</th>
-                <th>StudentID</th>
-                <th>Grades</th>
-                <th>Term</th>
+                    <th>ID</th>
+                    <th>Firstname</th>
+                    <th>Middlename</th>
+                    <th>Lastname</th>
+                    <th>StudentID</th>
+                    <th>Grades</th>
+                    <th>Term</th>
                 <tbody>
                     <?php
                  
@@ -71,7 +71,6 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
                                 <input type="submit" name="delete" value="Delete Grade">
                             </form>
                         </td>
-
 
 <?php
                     }

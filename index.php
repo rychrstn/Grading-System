@@ -42,6 +42,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     </div>
 
     <table>
+    <table class="table-contents">
         <thead>
             <tr>
                 <th>Professor Name</th>

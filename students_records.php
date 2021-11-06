@@ -1,5 +1,9 @@
 <?php include('admin_dashboard.php'); ?>
 <table class="table">
+<link rel="stylesheet" href="css/student_records.css">
+
+
+<table class="table-contents">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -12,6 +16,7 @@
                             <th>Year & Course</th>
                             <th>Contact Number</th>
                             <th>Student Status</th>
+                            <th>Operations</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,15 +41,15 @@
                         <td>
                             <form action="edit_students.php" method="POST">
                                 <input type="hidden" name="edit_id" value="<?php echo $rows['ID'];?>">
-                                <input type="submit" name="update" value="Update student">
+                                <input type="submit" id = "update" name="update" value="Update student">
                             </form>
                             <form action ="admin_validate_students.php" method="POST">
                                 <input type="hidden" name="valid_id" value="<?php echo $rows['ID']?>">
-                                <input type="submit" name="validate" value="Validate student">
+                                <input type="submit" id = "validate" name="validate" value="Validate student">
                             </form>
-                            <a href="read.php?id=<?php echo $rows['ID'];?>" class="badge badge-info">Read</a>
-                            <a href="delete.php?id=<?php echo $rows['ID']?>" class="badge badge-danger">Delete</a>
-                            <a href="edit.php?id=<?php echo $rows['ID']?>" class="badge badge-sucess"> Edit </a>
+                            <a href="read.php?id=<?php echo $rows['ID'];?>" class="badge">Read</a>
+                            <a href="delete.php?id=<?php echo $rows['ID']?>" class="badge">Delete</a>
+                            <a href="edit.php?id=<?php echo $rows['ID']?>" class="badge"> Edit </a>
                         </td>
                         </tr>
                         <?php
