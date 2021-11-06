@@ -19,6 +19,10 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
 <body>
    
     <a href="logout.php">Logout</a>
+    <form action="students_grades.php" method="GET">
+        <input type="submit" name="showgrade" value="Show Grade"> 
+    </form>
+    <a href="logout.php" class="logout">Log out</a>
 
     <div class="title">
     <h2>The University of Manila</h2>
