@@ -17,9 +17,6 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <title>Document</title>
 </head>
 <body>
-    <form action="students_grades.php" method="GET">
-        <input type="submit" name="showgrade" value="Show Grade"> 
-    </form>
     <a href="logout.php" class="logout">Log out</a>
 
     <div class="title">
@@ -38,10 +35,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <div class="info">
             <p><?php echo  $_SESSION['username'];?></p> <!--Fetch Year and Course-->
     </div>
-    <form action="" method="POST">
-        <input type="submit" name="students" value="show grade">
-    </form>
-    <table>
+    <table class="table-contents">
         <thead>
             <tr>
                 <th>Professor Name</th>
