@@ -7,6 +7,9 @@
 }
 
 .table-contents{
+    position: absolute;
+    top: 5%;
+    left: 9%;
     border-collapse: collapse;
     margin: 25px;
     font-size: 0.9rem;
@@ -25,7 +28,7 @@
 
 .table-contents th,
 .table-contents td {
-    padding: 12px 15px;
+    padding: 12px 20px;
 }
 
 .table-contents tbody tr {
