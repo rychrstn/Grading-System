@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     header("location:student_login.php?action=login");
 
 }
@@ -17,6 +17,10 @@ if(!isset($_SESSION['username'])){
     <title>Document</title>
 </head>
 <body>
+    <form action="students_grades.php" method="GET">
+        <input type="submit" name="showgrade" value="Show Grade"> 
+    </form>
+    <a href="logout.php">Logout</a>
 
     <div class="title">
     <h2>The University of Manila</h2>
@@ -34,6 +38,9 @@ if(!isset($_SESSION['username'])){
     <div class="info">
             <p><?php echo  $_SESSION['username'];?></p> <!--Fetch Year and Course-->
     </div>
+    <form action="" method="POST">
+        <input type="submit" name="students" value="show grade">
+    </form>
     
     
 </body>

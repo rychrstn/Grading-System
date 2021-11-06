@@ -44,15 +44,15 @@
                 <br>
                 <label> Student Status</label>
                 <select name="editstudentstatus">
+                <option value="Regular"<?php if ($results['StudentStatus'] === 'Regular') echo ' selected="selected"'?>>Regular</option>
+                <option value="Irregular"<?php if ($results['StudentStatus'] === 'Irregular') echo ' selected="selected"'?>>Irregular</option>
                     <?php
+                
                     if($results['StudentStatus'] == 'Regular'){
-                        echo "<option>Regular</option>";
+                        echo "Selected";
                       
-                    }
-                    ?>
-                    <?php
-                    if($results['StudentStatus'] == 'Irregular'){
-                        echo "<option>Irregular</option>";
+                    }else if($results['StudentStatus'] == 'Irregular'){
+                        echo "Selected";
                     }
                     ?>
                 </select>
