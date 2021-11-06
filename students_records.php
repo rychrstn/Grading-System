@@ -1,3 +1,4 @@
+<?php include('admin_dashboard.php'); ?>
 <table class="table">
                     <thead>
                         <tr>
