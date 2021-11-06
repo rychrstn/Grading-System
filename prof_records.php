@@ -9,7 +9,7 @@
 </head>
 <body>
     
-<table class="table">
+<table class="table-contents">
                 <thead>
                         
                     <tr>
@@ -21,8 +21,8 @@
                             <th>Middlename</th>
                             <th>Lastname</th>
                             <th>Year</th>
-                        
-                            <a href="subjects.php"> adsf</a>
+                            <th>Subject</th>
+                            <a href="subjects.php"></a>
                     </tr>
                         
                 </thead>
