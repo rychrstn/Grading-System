@@ -31,7 +31,8 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <i class="fas fa-download"></i>
     </div>
     <div id="user-icon">
-    <span id="user-hover"><?php echo  $_SESSION['username'];?></span>
+    <span id="user-hover"><?php echo  $_SESSION['username'];?>
+    <br> pa echo dito yung nasa trello</span>
     <span><i class="far fa-user-circle"></i></span>
     </div>
     <div>

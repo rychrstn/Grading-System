@@ -156,7 +156,7 @@
     color: #fff;
     white-space: nowrap;
     border-radius: 7px;
-    font-size: 25px;
+    font-size: 15px;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -173,7 +173,7 @@
 }
 
 #user-icon:hover #user-hover {
-    top: -55%;
+    top: -70%;
     left: 50%;
     visibility: visible;
     opacity: 1;
