@@ -43,9 +43,6 @@
         <br>
         <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;"
         type="submit" name="register" value="Sign up">
-        <div style="font-family: monospace; font-size: 15px;">Already have an Account?</div> 
-        <a style="text-decoration: none; color: #1EA4E3;
-        font-family: monospace; font-size: 15px" href="prof_login.php">Click here to Login</a>
     </form>
 
     <script type="text/javascript">

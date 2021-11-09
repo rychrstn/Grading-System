@@ -18,27 +18,22 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <title>Document</title>
 </head>
 <body>
-   
-    <a href="logout.php">Logout</a>
+
+    
     <form action="students_grades.php" method="GET">
         <input type="submit" name="showgrade" value="Show Grade"> 
     </form>
     <a href="logout.php" class="logout">Log out</a>
-
     <div class="title">
     <h2>The University of Manila</h2>
     </div>
     <div class = "download">
     <i class="fas fa-download"></i>
     </div>
-    <button class="student_icon"><i class="far fa-user-circle"></i></div>
-    <div class="modal_container">
-        <div class="modal">
-    <h2>Student chuchu</h2>
-    <p>Name: Khate Nabineg<br>
-       Year: 3rd Year College</p>
-    <button id="close">Back</button>
-        </div>
+    <div id="user-icon">
+    <span id="user-hover"><?php echo  $_SESSION['username'];?>
+    <br> pa echo dito yung nasa trello</span>
+    <span><i class="far fa-user-circle"></i></span>
     </div>
     <div>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="100" width="120">

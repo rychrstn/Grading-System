@@ -139,3 +139,42 @@
 .table-contents tbody tr:last-of-type {
     border-bottom: 2px solid green;
 }
+
+#user-icon {
+    position: absolute;
+    top:10%;
+    left:80%;
+    font-size: 60px;
+}
+
+#user-hover {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    white-space: nowrap;
+    border-radius: 7px;
+    font-size: 15px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#user-hover::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border: 15px solid;
+    border-color: #000 #0000 #0000 #0000;
+}
+
+#user-icon:hover #user-hover {
+    top: -70%;
+    left: 50%;
+    visibility: visible;
+    opacity: 1;
+}
