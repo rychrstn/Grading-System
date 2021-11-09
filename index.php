@@ -18,7 +18,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <title>Document</title>
 </head>
 <body>
-   
+
     
     <form action="students_grades.php" method="GET">
         <input type="submit" name="showgrade" value="Show Grade"> 

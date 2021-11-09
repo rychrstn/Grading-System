@@ -34,10 +34,6 @@
         <br>
         <br>
         <input class="btnlogin" style="width: 100px; height: 50px; color: white; background-color:black; font-size: 20px;" type="submit" name="login" value="Login">
-        <div class="signup">
-			<div style="font-size: 15px;">Don't have an Account?</div>
-			<a style = "color: #1EA4E3; font-size: 15px;" href="professor_register.php">Click here to Sign up</a>
-		</div>
         </div>
     </div>
     </form>
