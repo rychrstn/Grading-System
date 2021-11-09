@@ -20,7 +20,7 @@
                 <form action="update_students.php" method="POST">
                 <input type="hidden" name="edit_id" value="<?php echo $results['ID'];?>">
                 <label> Username </label>
-                <input class="uname" type="text" name="editusername" value="<?php echo $results['Username'];?>">
+                <input  type="text" name="editusername" value="<?php echo $results['Username'];?>">
                 <br>
                 <label> Password </label>
                 <input type="password" name="editpassword" value="<?php  $results['Password'];?>">
