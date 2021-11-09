@@ -47,9 +47,10 @@
                                 <input type="hidden" name="valid_id" value="<?php echo $rows['ID']?>">
                                 <input type="submit" id = "validate" name="validate" value="Validate student">
                             </form>
-                            <a href="read.php?id=<?php echo $rows['ID'];?>" class="badge">Read</a>
-                            <a href="delete.php?id=<?php echo $rows['ID']?>" class="badge">Delete</a>
-                            <a href="edit.php?id=<?php echo $rows['ID']?>" class="badge"> Edit </a>
+                            <form action="delete_students.php" method="GET">
+                                <input type="hidden" name="delete_id" value="<?php echo $rows['ID']?>">
+                                <input type="submit" name="delete" value="Delete Students">
+                            </form>
                         </td>
                         </tr>
                         <?php

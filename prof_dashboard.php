@@ -46,29 +46,31 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
                     <?php
                  
                     include('connection.php');
-                    $Select = "SELECT a.ID,a.StudentID, YearAndCourse, concat(a.Firstname, ' ', a.Middlename, ' ', a.Lastname) as Student, b.Grades, b.Term, c.SubjectCode, c.SubjectName, concat(d.Firstname, ' ', d.Middlename, ' ', d.Lastname) as Professor FROM students a JOIN grades b ON b.Student_ID = a.ID JOIN subjects c ON c.id = b.Subject_ID JOIN professor d ON d.id = b.Prof_ID
+                    $Select = "SELECT a.ID, a.StudentID,a.YearAndCourse, concat(a.Firstname, ' ', a.Middlename, ' ', a.Lastname) as Student,b.Grades,b.Remarks, b.Term,c.SubjectCode,b.id, c.SubjectName,concat(d.Firstname, ' ', d.Middlename, ' ', d.Lastname) as Professor FROM students AS a JOIN grades AS b ON b.Student_ID = a.ID JOIN subjects c ON c.id = b.Subject_ID JOIN professor AS d ON d.id = b.Prof_ID
 
                 WHERE b.Prof_ID = '".$_SESSION['id']."'";
                 $Run = mysqli_query($conn, $Select);
                 while($Row = mysqli_fetch_assoc($Run)){
+                    $gradesid = $Row['id'];
                         ?>
                         <tr>
-                        <td><?php echo $Row['ID']?></td>
-                        <td><?php echo $Row['StudentID']?></td>
-                        <td><?php echo $Row['Student'];?></td>
-                        <td><?php echo $Row['SubjectCode'];?></td>
-                        <td><?php echo $Row['Grades']?></td>
-                        <td><?php echo $Row['Term']?></td>
+                            <td><?php echo $Row['ID']?></td>
+                            <td><?php echo $Row['StudentID']?></td>
+                            <td><?php echo $Row['Student']?></td>
+                            <td><?php echo $Row['SubjectCode'];?></td>
+                            <td><?php echo $Row['Grades'];?></td>
+                            <td><?php echo $Row['Term']?></td>
                         <td>
-                            <form action="update_grades.php" method="GET">
-                                <input type="hidden" name="studentid" value="<?php echo $Row['ID']?>">
-                                <input type="submit" name="grades" value="Update Grade">
+                            <form action="edit_grades.php" method="GET">
+                                <input type="hidden" name="gradesid" value="<?php echo $Row['id'];?>">
+                                <input type="submit" name="update" value="Update Grades">
                             </form>
+                    
                         </td>
                         <td>
-                            <form action="delete_grades.php" method="GET">
-                                <input type="hidden" name="deleteid" value="<?php echo $Row['ID']?>">
-                                <input type="submit" name="delete" value="Delete Grade">
+                            <form action="delete_grade.php" method="GET">
+                            <input type="hidden" name="gradesid" value="<?php echo $Row['id'];?>">
+                            <input type="submit" name="delete" value="Delete Grade">
                             </form>
                         </td>
 
