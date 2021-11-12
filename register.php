@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,40 +13,40 @@
     <section>
         <div class="box"></div>
         </section>
-    <form method="post">
+    <form  method="post">
     <div class="textboxdiv">
     <div class="title"><p><b>Sign Up</b></p>
     </div>
-         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-         type="text" name="username" placeholder = "Username" required>
-         <i class="far fa-user"></i>
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" maxlength="20"  name="username" placeholder = "Username" required>
+        <i class="far fa-user"></i>
         <br>
         
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="password" name="password" placeholder = "Password" required>
+        type="password" maxlength="20" name="password" placeholder = "Password" required>
         <i class="fas fa-lock"></i>
         <br>
-         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-         type="number" name="id" placeholder = "Student ID" required>
+        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" maxlength="7" name="id" onkeypress="return isNumber(event)" placeholder = "Student ID" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" name="firstname" placeholder = "First Name" required>
+        type="text" name="firstname"  maxlength="20" placeholder = "First Name" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-         type="text" name="middlename" placeholder = "Middle Name" required>
+        type="text" name="middlename"  maxlength="10"  placeholder = "Middle Name" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-         type="text" name="lastname" placeholder = "Last Name" required>
+        type="text" name="lastname"  maxlength="10" placeholder = "Last Name" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-         type="text" name="yearcourse" placeholder = "Year & Course" required>
+        type="text" name="yearcourse"  maxlength="10" placeholder = "Year & Course" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="number" name="contacts" placeholder = "Contact Number" required>
+        type="text" name="contacts" maxlength="11" onkeypress="return isNumber(event)"  placeholder = "Contact Number" required>
         <br>
         <select style="border: 1px solid black; font-size: 20px; margin-top: 5px; width: 250px;" 
         name="status">
-            <option value="">Student's Status</option>
+           
             <option value="Regular">Regular Student</option>
             <option value="Irreguar"> Irregular Student</option>
         </select>
@@ -67,8 +68,21 @@
         // Turning off the event
         e.preventDefault();
     }
+
+        function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
+        
 </script>
 <?php
+
+$errors = array('username'=> '', 'password'=>'','id'=>'','firstname'=>'','middlename'=>'','lastname'=>'','yearcourse'=>'', 'contacts'=>'');
 include 'connection.php';
 
     if(isset($_POST['insert'])){
@@ -86,16 +100,59 @@ include 'connection.php';
         $Status = $_POST['status'];
         $bool = 0;
 
+        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $Username) == true)
+            {
+                echo "Invalid Username ";
+    
+            }
+
+            if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/', $Firstname) == True){
+                echo "Invalid Firstname";
+                exit();
+            }
+
+            if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/', $Middlename) == True){
+                echo  "Invalid Middlename";
+                exit();
+            }
+
+            if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/', $Lastname) == True){
+                echo  "Invalid Lastname";
+                exit();
+            }
+            
+            
+            if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+]/', $YearCourse) == True){
+                echo "Invalid Year And Course ";
+            }
+
+            
+
+        if(strlen($Studentid) < 7){
+            echo "Complete the Student ID number";
+            exit();
+        }
+
+        if(strlen($Contacts) < 11){
+            echo "Complete The Contact Number";
+            exit();
+
+        }
+
         $Sql_id = "SELECT * FROM `Students` WHERE StudentID = '$Studentid'";
         $Sql_name ="SELECT * FROM Students WHERE Firstname = '$Firstname' AND Middlename = '$Middlename' AND  Lastname = '$Lastname'";
+        $Sql_contacts = "SELECT * FROM Students WHERE ContactNumber ='$Contacts'";
         $Res_name = mysqli_query($conn, $Sql_name);
         $Res_id = mysqli_query($conn , $Sql_id);
+        $Res_contacts = mysqli_query($conn, $Sql_contacts);
 
 
         if(mysqli_num_rows($Res_id) >  0 ) {
             echo "Sorry the Student ID is already registered";
         }else if(mysqli_num_rows($Res_name) > 0 ){
             echo "The name is already in our system";
+        }elseif(mysqli_num_rows($Res_contacts) > 0 ){
+            echo "The Mobile number is already taken";
         }else{
             $Query = "INSERT INTO `Students`(Username,Password,StudentID,FirstName,MiddleName,LastName,YearAndCourse,ContactNumber,StudentStatus,Valid,DateTimeCreated) VALUES ('$Username','$hash','$Studentid','$Firstname','$Middlename','$Lastname','$YearCourse','$Contacts','$Status','$bool','$Date')";
             if($sql = mysqli_query($conn,$Query)){

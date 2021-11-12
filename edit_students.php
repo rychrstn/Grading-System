@@ -20,28 +20,28 @@
                 <form action="update_students.php" method="POST">
                 <input type="hidden" name="edit_id" value="<?php echo $results['ID'];?>">
                 <label> Username </label>
-                <input  type="text" name="editusername" value="<?php echo $results['Username'];?>">
+                <input  type="text" name="editusername"  maxlength="20" value="<?php echo $results['Username'];?>">
                 <br>
                 <label> Password </label>
-                <input type="password" name="editpassword" value="<?php  $results['Password'];?>">
+                <input type="password" name="editpassword"  maxlength="20" value="<?php  $results['Password'];?>">
                 <br>
                 <label> Student ID</label>
-                <input type="text" name="editid" value="<?php echo $results['StudentID'];?>">
+                <input type="text" name="editid"  maxlength="7" value="<?php echo $results['StudentID'];?>">
                 <br>
                 <label> Firstname</label>
-                <input type="text" name="editfirstname" value="<?php echo $results['Firstname']?>">
+                <input type="text" name="editfirstname"  maxlength="20" value="<?php echo $results['Firstname']?>">
                 <br>
                 <label> Middlename </label>
-                <input type="text" name="editmiddlename" value="<?php echo $results['Middlename']?>">
+                <input type="text" name="editmiddlename"  maxlength="20" value="<?php echo $results['Middlename']?>">
                 <br>
                 <label> Lastname</label>
-                <input type="text" name="editlastname" value="<?php echo $results['Lastname']?>">
+                <input type="text" name="editlastname"  maxlength="20" value="<?php echo $results['Lastname']?>">
                 <br>
                 <label> Year & Ccourse </label>
-                <input type="text" name="edityearcourse" value="<?php echo $results['YearAndCourse']?>">
+                <input type="text" name="edityearcourse" maxlength="19"  value="<?php echo $results['YearAndCourse']?>">
                 <br>
                 <label> Contact Number</label>
-                <input type="text" name="editnumber" value="<?php echo $results['ContactNumber']?>">
+                <input type="text" name="editnumber"  maxlength="11"  onkeypress="return isNumber(event)" value="<?php echo $results['ContactNumber']?>">
                 <br>
                 <label> Student Status</label>
                 <select name="editstudentstatus">
@@ -68,5 +68,16 @@
     } 
     ?>
     </form>
+    <script>
+        function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
+        </script>
 </body>
 </html>

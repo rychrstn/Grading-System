@@ -17,19 +17,16 @@
                             <th>ID</th>
                             <th>Username</th>
                             <th>Password</th>
-                            <th>Firstname</th>
-                            <th>Middlename</th>
-                            <th>Lastname</th>
+                            <th>Professor's Name</th>
                             <th>Year</th>
-                            <th>Subject</th>
-                            <a href="subjects.php"></a>
+                            <th>Action</th>
                     </tr>
                         
                 </thead>
                     <tbody>
                         <?php
                         include ('connection.php');
-                        $Query = "SELECT * FROM professor";
+                        $Query = "SELECT a.id,a.Username, a.Password, concat(a.Firstname, ' ' ,a.Middlename, ' ' ,a.Lastname) as Fullname , a.Year FROM professor AS a";
                         $sql = mysqli_query($conn,$Query);
                         if($rows = mysqli_num_rows($sql)> 0 ){
                             while($rows = mysqli_fetch_array($sql)){
@@ -38,19 +35,17 @@
                         <td><?php echo $rows['id'];?></td>
                         <td><?php echo $rows['Username'];?></td>
                         <td><?php echo $rows['Password'];?></td>
-                        <td><?php echo $rows['Firstname'];?></td>
-                        <td><?php echo $rows['Middlename'];?></td>
-                        <td><?php echo $rows['Lastname'];?></td>
+                        <td><?php echo $rows['Fullname'];?></td>
                         <td><?php echo $rows['Year'];?></td>
                         <td style="background: white;">
-                            <form action="prof_subject.php" method="POST">
-                                <input type="hidden" name="subjectid" value="<?php echo $rows['id']?>">
-                                <input type="submit" name="subject" value="subject">
+                            <form action="edit_prof.php" method="GET">
+                                <input type="hidden" name="edit_id" value="<?php echo $rows['id']?>">
+                                <input type="submit" name="edit" value="Update">
                             </form>
-                           
-                            <a href="try.php?id=<?php echo $rows['id'];?>" name="subject" class="badge badge-info">Add Subject </a>
-                            <a href="delete.php?id=<?php echo $rows['id']?>" class="badge badge-danger">Delete</a>
-                            <a href="edit.php?id=<?php echo $rows['id']?>" class="badge badge-sucess"> Edit </a>
+                            <form action="delete_prof.php" method="GET">
+                                <input type="hidden" name="prof_delete" value="<?php echo $rows['id']?>">
+                                <input type="submit" name="delete" value="delete">
+                            </form>
                         </td>
                         </tr>
                         <?php
@@ -58,7 +53,6 @@
                         }
                         ?>
                     </tbody>
-                   
                 </table>
     
 </body>

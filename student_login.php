@@ -68,13 +68,19 @@ if(isset($_POST['login'])){
             $Username = mysqli_real_escape_string($conn,$_POST['username']);
             $Password = mysqli_real_escape_string($conn,$_POST['password']);
             $Bool = $_POST['bool'];
-            $Login = "SELECT *  FROM `students` WHERE Username = '$Username' ";
+            $Login = "SELECT a.ID,a.Username, a.Password, a.StudentID, concat(a.Firstname,' ', a.Middlename, ' ' ,a.Lastname) as Fullname , a.YearAndCourse, a.StudentStatus, a.ContactNumber FROM students AS aWHERE Username = '$Username' ";
             $Sql = mysqli_query($conn,$Login);
             if($Sql->num_rows > 0 ) {
                 $row = mysqli_fetch_assoc($Sql);
+                $_SESSION['fullname'] = $row['Fullname'];
                 $_SESSION['username'] = $row['Username'];
                 $_SESSION['id'] = $row['ID'];
                 $_SESSION['studentid'] =  $row['StudentID'];
+                $_SESSION['password'] = $row['Password'];
+                $_SESSION['contactnumber'] = $row['ContactNumber'];
+                $_SESSION['studentstatus'] = $row['StudentStatus'];
+                $_SESSION['yearandcourse'] = $row['YearAndCourse'];
+                $_SESSION['status'] = $row['StudentsStatus'];
                     if(password_verify($Password , $row['Password'])){
                       if($Bool == 1){
                           header('location:index.php');

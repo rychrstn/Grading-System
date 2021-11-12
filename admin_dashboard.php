@@ -10,6 +10,6 @@
     <a href="students_records.php"><button>Student Records and Validation</button></a>
     <a href="professor_register.php"><button>Professor Register</button></a>
     <a href="subjects.php"><button>Create Subjects</button></a>
-    <a href="prof_records.php"><button>Hello</button></a>
+    <a href="prof_records.php"><button>Proffesor Records</button></a>
 </body>
 </html>
