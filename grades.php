@@ -108,14 +108,25 @@
         $Remark ="Failed";
         
     }
+    $Sqlgrades = "SELECT * FROM `grades` WHERE Prof_ID = '$Profid' AND Subject_ID = '$Subjectid' AND Student_ID = '$Studentid' AND Grades = '$Grades' AND Term = '$Term'";
+    $Sqlsubject = "SELECT * FROM `grades` WHERE  Subject_ID = '$Subjectid' AND Student_ID = '$Studentid' AND Term = '$Term' AND Grades = '$Grades'";
+    $Res_subjects = mysqli_query($conn, $Sqlsubject);
+    $Res_grades = mysqli_query($conn , $Sqlgrades);
+    if(mysqli_num_rows($Res_grades) > 0 ) {
+        echo "You've already graded the student";
+    }elseif(mysqli_num_rows($Res_subjects) > 0 ){
+        echo "You've already graded this subject";
+
+    }else{
         $Insert = "INSERT INTO grades(Prof_ID, Subject_ID, Student_ID, Grades, Term, Remarks, DateTimeCreated) VALUES ('$Profid','$Subjectid','$Studentid','$Grades', '$Term','$Remark','$Date')";
         if($create = mysqli_query($conn, $Insert)){
-            header('Location:grades.php');
+            header('Location:prof_dashboard.php');
         }else{
-            echo "error";
+            echo "error".$Sql."<br>".$conn->error;
         }
     
     }
+}
 
 
     ?>

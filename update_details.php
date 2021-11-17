@@ -14,25 +14,28 @@ if(isset($_POST['update_students'])){
     $EditYearandCourse = mysqli_real_escape_string($conn, $_POST['edityearcourse']);
     $EditNumber = mysqli_real_escape_string($conn, $_POST['editnumber']);
     $EditStudentStatus = $_POST['editstudentstatus'];
+
     
-    
+
     if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $EditUsername) == true)
         {
-            echo "Invalid Username ";
+        
+            $erros['editusername'] = "Invalid Username ";
+            exit();
 
         }
 
-        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/',  $EditFirstname) == True){
+        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $EditFirstname) == True){
             echo "Invalid Firstname";
             exit();
         }
 
-        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/',  $EditMiddlename) == True){
+        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $EditMiddlename) == True){
             echo  "Invalid Middlename";
             exit();
         }
 
-        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/',  $EditLastname) == True){
+        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $EditLastname) == True){
             echo "Invalid Lastname";
             exit();
         }
@@ -40,6 +43,7 @@ if(isset($_POST['update_students'])){
         
         if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+]/', $EditYearandCourse) == True){
             echo "Invalid Year And Course ";
+            exit();
         }
 
         
@@ -53,20 +57,27 @@ if(isset($_POST['update_students'])){
         exit();
 
     }
-    
-        $Query = "UPDATE `students` SET Username = '$EditUsername', Password = '$Password', StudentID = '$EditID', Firstname = '$EditFirstname', Middlename = '$EditMiddlename' , Lastname = '$EditLastname' , YearAndCourse = '$EditYearandCourse', ContactNumber = '$EditNumber', StudentStatus = '$EditStudentStatus', DateTimeUpdated = '$Date' WHERE ID = '$Update_id'";
-        $Sql = mysqli_query($conn, $Query);
-
-        if($Sql ) {
-            echo "record updated";
-            header('location:students_records.php');
-        }else{
-            echo "error".$Sql."<br>".$conn->error;
+        $Selectnum = "SELECT * FROM students WHERE StudentID = '$EditID'";
+        $Sql_num = mysqli_query($conn , $Selectnum);
+        if(mysqli_num_rows($Sql_num) == 1  ) {
+            echo "this ID is not yours";
+        
         }
-    }
+        else{
+            $Query = "UPDATE `students` SET Username = '$EditUsername', Password = '$Password', StudentID = '$EditID', Firstname = '$EditFirstname', Middlename = '$EditMiddlename' , Lastname = '$EditLastname' , YearAndCourse = '$EditYearandCourse', ContactNumber = '$EditNumber', StudentStatus = '$EditStudentStatus', DateTimeUpdated = '$Date' WHERE ID = '$Update_id'";
+            $Sql = mysqli_query($conn, $Query);
+    
+            if($Sql) {
+                echo "record updated";
+                header('location:students_profile.php');
+            }else{
+                echo "error".$Sql."<br>".$conn->error;
+            }
+
+        }
 
 
-
+        }
 
 
 

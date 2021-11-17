@@ -68,7 +68,7 @@ if(isset($_POST['login'])){
             $Username = mysqli_real_escape_string($conn,$_POST['username']);
             $Password = mysqli_real_escape_string($conn,$_POST['password']);
             $Bool = $_POST['bool'];
-            $Login = "SELECT a.ID,a.Username, a.Password, a.StudentID, concat(a.Firstname,' ', a.Middlename, ' ' ,a.Lastname) as Fullname , a.YearAndCourse, a.StudentStatus, a.ContactNumber FROM students AS aWHERE Username = '$Username' ";
+            $Login = "SELECT a.ID,a.Username, a.Password, a.StudentID, concat(a.Firstname,' ', a.Middlename, ' ' ,a.Lastname) as Fullname , a.YearAndCourse, a.StudentStatus, a.ContactNumber , a.Valid FROM students As a  WHERE Username = '$Username' ";
             $Sql = mysqli_query($conn,$Login);
             if($Sql->num_rows > 0 ) {
                 $row = mysqli_fetch_assoc($Sql);
@@ -80,10 +80,12 @@ if(isset($_POST['login'])){
                 $_SESSION['contactnumber'] = $row['ContactNumber'];
                 $_SESSION['studentstatus'] = $row['StudentStatus'];
                 $_SESSION['yearandcourse'] = $row['YearAndCourse'];
-                $_SESSION['status'] = $row['StudentsStatus'];
+                $_SESSION['status'] = $row['StudentStatus'];
+                $_SESSION['valid'] = $row['Valid'];
+                $Bool = $row['Valid'];
                     if(password_verify($Password , $row['Password'])){
                       if($Bool == 1){
-                          header('location:index.php');
+                        header('location:index.php');
                       } else  {
                         echo "<div class = FieldError><p>You're not yet validated</p></div>";
                       }

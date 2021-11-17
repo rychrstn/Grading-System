@@ -117,7 +117,7 @@ CREATE TABLE `students` (
   `Middlename` varchar(20) NOT NULL,
   `Lastname` varchar(20) NOT NULL,
   `YearAndCourse` varchar(20) NOT NULL,
-  `ContactNumber` int NOT NULL,
+  `ContactNumber` BIGINT NOT NULL,
   `StudentStatus` varchar(20) NOT NULL,
   `Valid` tinyint(1) NOT NULL,
   `DateTimeCreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

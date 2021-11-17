@@ -47,3 +47,27 @@ if(isset($_POST['submit'])){
 
 
 ?>
+
+<form action="" method="POST">
+<input type="text" name="grade" >
+<input type="submit" name="grades">
+
+
+</form>
+
+
+<?php 
+ $remark = "";
+if(isset($_POST['grades'])){
+    $Grades = $_POST['grade'];
+  
+
+    if($Grades <= "99"  &&  $Grades >= "75"){
+        $remark = "Passed";
+    }else{
+        $remark ="Failed";
+    }
+
+}
+?>
+<input type="text" name="remark" value="<?php echo $remark?>">

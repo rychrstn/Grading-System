@@ -9,18 +9,20 @@
 </head>
 <body>
     <?php
+   
     include ('connection.php');
-    if(isset($_POST['update'])){
-        $id = $_POST['edit_id'];
+    if(isset($_GET['edit'])){
+        $id = $_GET['edit_detail'];
         $Query = "SELECT * FROM `students` WHERE `ID` = '$id'";
         $Sql = mysqli_query($conn,$Query);
         if(mysqli_num_rows($Sql)> 0 ){
             foreach($Sql as $results){
                 ?>
-                <form action="update_students.php" method="POST">
+               <form action="update_details.php" method="POST">
                 <input type="hidden" name="edit_id" value="<?php echo $id?>">
                 <label> Username </label>
                 <input  type="text" name="editusername"  maxlength="20" value="<?php echo $results['Username'];?>">
+                <p><?php if(isset($errors['editusername'])) echo $errros['editusername']?></p>
                 <br>
                 <label> Password </label>
                 <input type="password" name="editpassword"  maxlength="20" value="<?php  $results['Password'];?>">
@@ -57,17 +59,19 @@
                     }
                     ?>
                 </select>
+                <br>
                 <input type="submit" name="update_students" value="Update Students">
-
-
-
-
                 <?php
+
             }
+
         }
-    } 
-    ?>
-    </form>
+    }
+
+                ?>
+
+
+</form>
     <script>
         function isNumber(evt) {
     evt = (evt) ? evt : window.event;
@@ -81,3 +85,5 @@
         </script>
 </body>
 </html>
+    
+

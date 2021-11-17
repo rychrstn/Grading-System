@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_SESSION['username'])){
     session_destroy();
-    header('Location:student_login.php');
+    header('Location:prof_login.php');
 }
 
 
