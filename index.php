@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
+if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'], $_SESSION['valid'])){
     header("location:student_login.php?action=login");
 
 }
@@ -20,6 +20,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
 <body>
 
     <a href="logout.php" class="logout">Log out</a>
+    <a href="students_profile.php">Student's Profile</a>
     <div class="title">
     <h2>The University of Manila</h2>
     </div>
@@ -27,8 +28,9 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
     <i class="fas fa-download"></i>
     </div>
     <div id="user-icon">
-    <span id="user-hover"><?php echo  $_SESSION['username'];?>
-    <br> pa echo dito yung nasa trello</span>
+       
+    <span id="user-hover"><?php echo  $_SESSION['username'];?> </span>
+    <br>
     <span><i class="far fa-user-circle"></i></span>
     </div>
     <div>
@@ -38,7 +40,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'])){
         <p>1st Semester SY: 2021-2022</p>
     </div>
     <div class="info">
-            <p><?php echo  $_SESSION['username'];?></p> <!--Fetch Year and Course-->
+            <p><?php echo  $_SESSION['username'] . "\t". $_SESSION['fullname']?></p> <!--Fetch Year and Course-->
     </div>
 
     <table>
