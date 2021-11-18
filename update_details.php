@@ -57,13 +57,7 @@ if(isset($_POST['update_students'])){
         exit();
 
     }
-        $Selectnum = "SELECT * FROM students WHERE StudentID = '$EditID'";
-        $Sql_num = mysqli_query($conn , $Selectnum);
-        if(mysqli_num_rows($Sql_num) == 1  ) {
-            echo "this ID is not yours";
-        
-        }
-        else{
+
             $Query = "UPDATE `students` SET Username = '$EditUsername', Password = '$Password', StudentID = '$EditID', Firstname = '$EditFirstname', Middlename = '$EditMiddlename' , Lastname = '$EditLastname' , YearAndCourse = '$EditYearandCourse', ContactNumber = '$EditNumber', StudentStatus = '$EditStudentStatus', DateTimeUpdated = '$Date' WHERE ID = '$Update_id'";
             $Sql = mysqli_query($conn, $Query);
     
@@ -77,7 +71,7 @@ if(isset($_POST['update_students'])){
         }
 
 
-        }
+        
 
 
 
