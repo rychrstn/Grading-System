@@ -85,7 +85,7 @@
 
 .year {
     position: absolute;
-    top: 13%;
+    top: 16%;
     left: 15%;
     font-size: 20px;
 }
@@ -177,4 +177,13 @@
     left: 50%;
     visibility: visible;
     opacity: 1;
+}
+
+span {
+    position: absolute;
+    top: 10%;
+    left: 80%;
+    font-size: 50px;
+    text-decoration: none;
+    color: #000;
 }
