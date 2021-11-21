@@ -22,17 +22,17 @@ if(isset($_POST['update_students'])){
 
         }
 
-        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/',  $EditFirstname) == True){
+        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $EditFirstname) == True){
             echo "Invalid Firstname";
             exit();
         }
 
-        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/',  $EditMiddlename) == True){
+        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $EditMiddlename) == True){
             echo  "Invalid Middlename";
             exit();
         }
 
-        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/',  $EditLastname) == True){
+        if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $EditLastname) == True){
             echo "Invalid Lastname";
             exit();
         }
@@ -53,7 +53,12 @@ if(isset($_POST['update_students'])){
         exit();
 
     }
-    
+    $Select = "SELECT * FROM `students` WHERE StudentID = '$EditID'";
+    $Res_id = mysqli_query($conn, $Select);
+    if(mysqli_num_rows($Res_id)){
+        echo "There is the same id as you";
+        exit();
+    }else{
         $Query = "UPDATE `students` SET Username = '$EditUsername', Password = '$Password', StudentID = '$EditID', Firstname = '$EditFirstname', Middlename = '$EditMiddlename' , Lastname = '$EditLastname' , YearAndCourse = '$EditYearandCourse', ContactNumber = '$EditNumber', StudentStatus = '$EditStudentStatus', DateTimeUpdated = '$Date' WHERE ID = '$Update_id'";
         $Sql = mysqli_query($conn, $Query);
 
@@ -64,6 +69,9 @@ if(isset($_POST['update_students'])){
             echo "error".$Sql."<br>".$conn->error;
         }
     }
+
+    }
+    
 
 
 

@@ -41,7 +41,7 @@
                 <td><?php echo $Row['StudentID'];?></td>
                 <td><?php echo $Row['YearAndCourse'];?></td>
                 <td>
-                    <form action="" method="GET">
+                    <form action="" method="POST">
                     <input type="hidden" name="studentid" value="<?php echo $Row['ID']?>">
                     <?php
                     include('connection.php');
@@ -87,13 +87,13 @@
     error_reporting(0);
     $remark ="";
     include('connection.php');
-    if(isset($_GET['grade'])){
+    if(isset($_POST['grade'])){
     $Profid = $_SESSION['id'];
-    $Studentid = $_GET['studentid'];
-    $Grades = $_GET['grades'];
-    $Subjectid = $_GET['subject'];
-    $Term = $_GET['term'];
-    $Remark =  $_GET['remark'];
+    $Studentid = $_POST['studentid'];
+    $Grades = $_POST['grades'];
+    $Subjectid = $_POST['subject'];
+    $Term = $_POST['term'];
+    $Remark =  $_POST['remark'];
     $Date = date_default_timezone_set('Asia/Manila');
     $Date = date('Y-m-d H:i:s');
     

@@ -59,9 +59,9 @@ if(isset($_GET['search'])){
     a.Lastname LIKE '%$SearchValue%' OR 
     a.StudentID LIKE '%$SearchValue%' OR 
     b.Grades LIKE '%$SearchValue%' OR
-    b.Term LIKE '%$SearchValue' OR 
-    b.Remarks LIKE '%$SearchValue' OR 
-    c.SubjectCode LIKE '%$SearchValue'
+    b.Term LIKE '%$SearchValue%' OR 
+    b.Remarks LIKE '%$SearchValue%' OR 
+    c.SubjectCode LIKE '%$SearchValue%'
     ";
     
         $Run = mysqli_query($conn , $Search);
@@ -81,7 +81,7 @@ if(isset($_GET['search'])){
 
 
 ?>
-        <tr>
+        <
    
         </tr>
     </tbody>

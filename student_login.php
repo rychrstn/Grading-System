@@ -84,13 +84,13 @@ if(isset($_POST['login'])){
                 $_SESSION['valid'] = $row['Valid'];
                 $Bool = $row['Valid'];
                     if(password_verify($Password , $row['Password'])){
-                      if($Bool == 1){
+                    if($Bool == 1){
                         header('location:index.php');
-                      } else  {
-                        echo "<div class = FieldError><p>You're not yet validated</p></div>";
-                      }
                     } else  {
-                      echo "<div class = FieldError1><p>Incorrect Password!</p></div>";
+                        echo "<div class = FieldError><p>You're not yet validated</p></div>";
+                        }
+                    } else  {
+                    echo "<div class = FieldError1><p>Incorrect Password!</p></div>";
                     }
             }else{
                 echo "<div class = FieldError2><p>Account do not Exist!</p></div>";
