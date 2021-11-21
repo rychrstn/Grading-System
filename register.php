@@ -69,6 +69,7 @@
 <?php
 
 include 'connection.php';
+    if(isset($_POST['insert'])){
         $Date = date_default_timezone_set('Asia/Manila');
         $Date = date('Y-m-d H:i:s');
         $Username = trim($_POST['username']);
@@ -82,9 +83,6 @@ include 'connection.php';
         $Contacts = trim($_POST['contacts']);
         $Status = $_POST['status'];
         $bool = 0;
-
-    if(isset($_POST['insert'])){
-        
 
         if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $Username) == true)
             {
