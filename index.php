@@ -15,12 +15,12 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'], $_SESS
     <script src="https://kit.fontawesome.com/d29cb4cf2b.js" crossorigin="anonymous"></script>   
     <link rel="stylesheet" href="css/studentdashboard.css">
     <script type = "text/javascript" src="app.js"></script>
-    <title>Document</title>
+    <title>Student Dashboard</title>
 </head>
 <body>
 
     <a href="logout.php" class="logout">Log out</a>
-    <a href="students_profile.php">Student's Profile</a>
+    <a href="students_profile.php"><span><i class="far fa-user-circle"></i></span></a>
     <div class="title">
     <h2>The University of Manila</h2>
     </div>
@@ -28,10 +28,8 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'], $_SESS
     <i class="fas fa-download"></i>
     </div>
     <div id="user-icon">
-       
     <span id="user-hover"><?php echo  $_SESSION['username'];?> </span>
     <br>
-    <span><i class="far fa-user-circle"></i></span>
     </div>
     <div>
     <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="100" width="120">
@@ -40,7 +38,7 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'], $_SESS
         <p>1st Semester SY: 2021-2022</p>
     </div>
     <div class="info">
-            <p><?php echo  $_SESSION['username'] . "\t". $_SESSION['fullname']?></p> <!--Fetch Year and Course-->
+            <p><?php echo  $_SESSION['username'] . "<br>" . "\t". $_SESSION['fullname']?></p> <!--Fetch Year and Course-->
     </div>
 
     <table>
