@@ -9,7 +9,7 @@
 .table-contents{
     position: absolute;
     top: 5%;
-    left: 9%;
+    left: 13%;
     border-collapse: collapse;
     margin: 25px;
     font-size: 0.9rem;
@@ -29,6 +29,7 @@
 .table-contents th,
 .table-contents td {
     padding: 12px 20px;
+    text-align: left;
 }
 
 .table-contents tbody tr {
@@ -41,4 +42,82 @@
 
 .table-contents tbody tr:last-of-type {
     border-bottom: 2px solid green;
+}
+
+.wrapper{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.link_wrapper{
+    position: relative;
+}
+
+a{
+    display: block;
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    background: #333;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 3px solid #333;
+    transition: all .35s;
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 0;
+    top: 0;
+    z-index: -1;
+    transition: all .35s;
+}
+
+.icon svg{
+    width: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    transform: rotate(-45deg);
+    fill: #2ecc71;
+    transition: all .35s;
+}
+
+a:hover{
+    width: 200px;
+    border: 3px solid #2ecc71;
+    background: transparent;
+    color: #2ecc71;
+}
+
+a:hover + .icon{
+    border: 3px solid #2ecc71;
+    right: -25%;
+}
+
+.form-submit-button {
+    background:#B9DFFF;
+    color:#fff;
+    border:1pxsolid#eee;
+    border-radius:20px;
+    box-shadow:5px5px5px#eee;
+    text-shadow:none;
+}
+.form-submit-button:hover {
+    background:#016ABC;
+    color:#fff;
+    border:1pxsolid#eee;
+    border-radius:20px;
+    box-shadow:5px5px5px#eee;
+    text-shadow:none;
 }

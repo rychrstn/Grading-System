@@ -46,7 +46,7 @@
         <br>
         <select style="border: 1px solid black; font-size: 20px; margin-top: 5px; width: 250px;" 
         name="status">
-           
+
             <option value="Regular">Regular Student</option>
             <option value="Irreguar"> Irregular Student</option>
         </select>
@@ -57,7 +57,7 @@
         <br>
         <div style="font-family: monospace; font-size: 15px;">Already have an Account?</div> 
         <a style="text-decoration: none; color: #1EA4E3;
-        font-family: monospace; font-size: 15px" href="student_login.php">Click here to Login</a>
+        font-family: monospace; font-size: 15px" href="student_login.php">Click here to Login</a>  <br>
     </form>
     
 </body>
@@ -102,12 +102,12 @@ include 'connection.php';
 
         if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/',  $Username) == true)
             {
-                echo "Invalid Username ";
+                echo "Invalid Username";
     
             }
 
             if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]1234567890/', $Firstname) == True){
-                echo "Invalid Firstname";
+                echo "Invalid Firstname"; 
                 exit();
             }
 
@@ -123,18 +123,19 @@ include 'connection.php';
             
             
             if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+]/', $YearCourse) == True){
-                echo "Invalid Year And Course ";
+                echo "Invalid Year And Course";
             }
 
             
 
         if(strlen($Studentid) < 7){
-            echo "Complete the Student ID number";
+            echo  "Complete the Student ID number";
             exit();
         }
 
         if(strlen($Contacts) < 11){
-            echo "Complete The Contact Number";
+            
+            echo  "Complete The Contact Number ";
             exit();
 
         }

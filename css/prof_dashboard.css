@@ -7,25 +7,149 @@
 }
 
 i {
+    position: absolute;
+    top: 30%;
+    left: 5%;
     font-size: 60px;
-    padding-top: 100px;
-    padding-left: 30px;
 }
 
 .profname {
-    padding-left: 100px;
-    margin-top: -50px;
-    padding-bottom: 5px;
-    font-size: 25px;
+    position: absolute;
+    top: 32%;
+    left: 10%;
 }
 
 .year {
-    padding-left: 100px;
-    padding-bottom: 5px;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+}
+
+.logout{
+    position: absolute;
+    top: 30%;
+    left: 90%;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color:black;
+    font-size: 15px;
+}
+
+.inp_grd {
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color:black;
+    font-size: 15px;
+    transition: .5s ease-out;
+}
+
+
+.inp_grd:hover {
+    background-color: rgba(0, 255, 149, 0.5);
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(0, 255, 149, 0.5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(0, 247, 193);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px green;
+    background-position: left
+}
+
+
+.search {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    border: solid 2px black;
+    border-radius: 25px;
     font-size: 25px;
 }
 
-.term {
-    margin-left: 100px;
-    font-size: 15px;
+.srch_btn {
+    position: absolute;
+    top: 40.6%;
+    left: 58%;
+    border-radius: 5px;
+    transition: ease-in-out all .5s;
+    padding: 3px;
+}
+
+.srch_btn:hover {
+    background-color: rgba(0, 255, 149, 0.5);
+}
+
+.table-contents{
+    position: absolute;
+    border-collapse: collapse;
+    margin: 25px;
+    font-size: 0.9rem;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    top: 45%;
+    left: 20%;
+}
+
+.table-contents thead tr {
+    background-color: green;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table-contents th,
+.table-contents td {
+    padding: 15px 15px;
+    text-align: center;
+    border-left: solid 1px white;
+}
+
+.table-contents tbody tr {
+    border-bottom: 1 px solid green;
+}
+
+.table-contents tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table-contents tbody tr:last-of-type {
+    border-bottom: 2px solid green;
+}
+
+.UM {
+    position: absolute;
+    top: 2%;
+    left: 46%;
+}
+
+.title{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    display: flex;
+    flex-direction: end;
+    color: green;
+}
+
+.address {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    display: flex;
+    flex-direction: end;
+    color: green;
+}
+
+i {
+    text-decoration: none;
+    color: black;
 }

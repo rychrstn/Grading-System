@@ -17,27 +17,34 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
     <title>Professor Dashboard</title>
 </head>
 <body>
-   <!-- sidebar -->
-    <p> Prof: <?php echo  $_SESSION['firstname']. $_SESSION['middlename'] . $_SESSION['lastname'] ?></p>
-    
-    <!--<p> Prof: <?php echo  $_SESSION['firstname']. $_SESSION['middlename'] . $_SESSION['lastname'] ?></p>-->
-    
-    <h2><?php echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname'] ?></h2>
-    <h2><?php echo $_SESSION['year'];?></h2>
-    <h2><?php echo $_SESSION['id']?></h2>
+<!-- sidebar -->
+    <!--<p> Prof: <?php /*echo  $_SESSION['firstname']. $_SESSION['middlename'] . $_SESSION['lastname']*/ ?></p>
+    <p> Prof: <?php /*echo  $_SESSION['firstname']. $_SESSION['middlename'] . $_SESSION['lastname'] */?></p>
+    <h2><?php /*echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname']*/ ?></h2>
+    <h2><?php /*echo $_SESSION['year'];?></h2>
+    <h2><?php echo $_SESSION['id']*/?></h2>-->
+    <div class="title">
+    <h2>The University of Manila</h2> 
+    </div>
+    <div class="address">
+    <h2>546 Delos Santos St, 403, Manila, 1008 Metro Manila</h2>
+    </div>
+    <div class="UM">
+    <img class="um_logo" src="images/um.jpeg" alt="umlogo" height="100" width="120">
+    </div>
     <i class="fas fa-user-tie"></i>
     <h2 class = "profname"><?php echo $_SESSION['firstname']   ."\t". $_SESSION['middlename'] . "\t" . $_SESSION['lastname'] ?></h2>
     <h2 class="year"><?php echo $_SESSION['year'];?></h2>
-    <a href="prof_logout.php">Logout</a>
+    <a href="prof_logout.php" class="logout">Logout</a>
     <form action="grades.php" method="POST">
         <input type="hidden" name="profid" value="<?php echo $_SESSION['id']?>">
-        <input type="submit" name="grades" value="input grades">
+        <input type="submit" name="grades" value="input grades" class="inp_grd">
     </form>
     <form action="prof_search.php" method="GET">
-        <input type="text" name="value" placeholder="Search data">
-        <input type="submit" name="search" value="Search Data">
+        <input class="search" type="text" name="value" placeholder="Search data">
+        <input class="srch_btn" type="submit" name="search" value="Seek">
     </form>
-        <table>
+        <table class="table-contents">
         <thead>
             <tr>
                     <th>Student's Fullname</th>
@@ -45,6 +52,9 @@ if(!isset($_SESSION['firstname']  , $_SESSION['middlename'] , $_SESSION['lastnam
                     <th>Subjects</th>                    
                     <th>Grades</th>
                     <th>Term</th>
+                    <th>Remark</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 <tbody>
                     <?php
                  
