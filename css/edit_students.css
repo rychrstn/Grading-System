@@ -15,9 +15,6 @@ body{
     background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
     background: linear-gradient(to right, #93F9B9, #1D976C);
 }
-
-<<<<<<< HEAD
-=======
 .uname {
     position: absolute;
     top: 50%;
@@ -94,4 +91,3 @@ form .update-btn {
     padding-right: 15px;
     font-weight: bold;
 }
->>>>>>> e31d3a9c1bf3a87b2d5e9e6d65e88b38abbd27ad
