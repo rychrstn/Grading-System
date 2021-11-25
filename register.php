@@ -13,36 +13,36 @@
     <section>
         <div class="box"></div>
         </section>
-    <form  method="post">
+    <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
     <div class="textboxdiv">
     <div class="title"><p><b>Sign Up</b></p>
     </div>
-        <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" maxlength="20"  name="username" placeholder = "Username" required>
+    <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
+        type="text" maxlength="20"  name="username" id="UserName" placeholder = "Username"required>
         <i class="far fa-user"></i>
         <br>
         
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="password" maxlength="20" name="password" placeholder = "Password" required>
+        type="password" maxlength="20" name="password" id="PassWord" placeholder = "Password" required>
         <i class="fas fa-lock"></i>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" maxlength="7" name="id" onkeypress="return isNumber(event)" placeholder = "Student ID" required>
+        type="text" maxlength="7" id="ID" name="id" onkeypress="return isNumber(event)" placeholder = "Student ID" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" name="firstname"  maxlength="20" placeholder = "First Name" required>
+        type="text" name="firstname" id="FirstName" maxlength="20" placeholder = "First Name" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" name="middlename"  maxlength="10"  placeholder = "Middle Name" required>
+        type="text" name="middlename" id="MiddleName"  maxlength="10"  placeholder = "Middle Name" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" name="lastname"  maxlength="10" placeholder = "Last Name" required>
+        type="text" name="lastname" id="LastName"  maxlength="10" placeholder = "Last Name" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" name="yearcourse"  maxlength="10" placeholder = "Year & Course" required>
+        type="text" name="yearcourse" id="YearCourse" maxlength="10" placeholder = "Year & Course" required>
         <br>
         <input style="border: 1px solid black; font-size: 20px; margin-top: 5px;"
-        type="text" name="contacts" maxlength="11" onkeypress="return isNumber(event)"  placeholder = "Contact Number" required>
+        type="text" name="contacts" id="Contacts" maxlength="11"  value="09" onkeypress="return isNumber(event)"  placeholder = "Contact Number" required>
         <br>
         <select style="border: 1px solid black; font-size: 20px; margin-top: 5px; width: 250px;" 
         name="status">
@@ -51,6 +51,7 @@
             <option value="Irreguar"> Irregular Student</option>
         </select>
         <br>
+
         <input class="btnsignup" style="width: 250px; height: 50px; color: white; background-color:lightgreen; font-size: 20px;
         margin-bottom: 2px;"
         type="submit" name="insert" value="Sign Up">
@@ -62,41 +63,22 @@
     
 </body>
 </html>
-<script type="text/javascript">
-    // Callback
-    window.onbeforeunload = function(e) {
-        // Turning off the event
-        e.preventDefault();
-    }
 
-        function isNumber(evt) {
-    evt = (evt) ? evt : window.event;
-    var charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        return false;
-    }
-    return true;
-}
-
-        
-</script>
 <?php
 
-$errors = array('username'=> '', 'password'=>'','id'=>'','firstname'=>'','middlename'=>'','lastname'=>'','yearcourse'=>'', 'contacts'=>'');
 include 'connection.php';
-
     if(isset($_POST['insert'])){
         $Date = date_default_timezone_set('Asia/Manila');
         $Date = date('Y-m-d H:i:s');
-        $Username = $_POST['username'];
-        $Password = $_POST['password'];
+        $Username = trim($_POST['username']);
+        $Password = trim($_POST['password']);
         $hash = password_hash($Password, PASSWORD_BCRYPT);
-        $Studentid = $_POST['id'];
-        $Firstname = $_POST['firstname'];
-        $Middlename = $_POST['middlename'];
-        $Lastname = $_POST['lastname'];
+        $Studentid = trim($_POST['id']);
+        $Firstname = trim($_POST['firstname']);
+        $Middlename = trim($_POST['middlename']);
+        $Lastname = trim($_POST['lastname']);
         $YearCourse = $_POST['yearcourse'];
-        $Contacts = $_POST['contacts'];
+        $Contacts = trim($_POST['contacts']);
         $Status = $_POST['status'];
         $bool = 0;
 
