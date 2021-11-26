@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/subjects.css">
     <title>Create Subjects</title>
 </head>
 <body>
     <?php include('admin_dashboard.php');?>
+    <div class="box">
     <form action="" method="POST">
-        <label>Subject Code</label>
-        <input type="text" name="subjectcode" id="">
+        <label class="form_label" for="subjectcode">Subject Code</label>
         <br>
-        <label for="">Subject Name</label>
-        <input type="text" name="subjectname" id="">
+        <input class="form_input" type="text" name="subjectcode" id="subjectcode">
         <br>
-        <label for="">Unit</label>
-        <input type="text" name="unit">
+        <label class="form_label"  for="subjectname">Subject Name</label>
         <br>
-        <input type="submit" name="create" value="Create">
+        <input class="form_input" type="text" name="subjectname" id="subjectname">
+        <br>
+        <label class="form_label"  for="unit">Unit</label>
+        <br>
+        <input class="form_input" type="text" name="unit" id="unit">
+        <br>
+        <br>
+        <input class="Create" type="submit" name="create" value="Create">
+        <br>
     </form>
-    
+    </div>
 </body>
 </html>
 

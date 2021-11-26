@@ -28,6 +28,7 @@
 .table-contents th,
 .table-contents td {
     padding: 12px 15px;
+    text-align: center;
 }
 
 .table-contents tbody tr {
@@ -64,3 +65,6 @@
     color: black;
 }
 
+.delete:hover {
+    background-color: red;
+}

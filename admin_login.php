@@ -72,7 +72,7 @@ include('connection.php');
         $Query = "SELECT * FROM `admin` WHERE `Username` = '$Username' AND `Password` = '$Password'";
         $sql = mysqli_query($conn,$Query);
         if(mysqli_num_rows($sql)> 0 ){
-            header('Location:admin_dashboard.php');
+            header('Location:students_records.php');
         }else{
             echo "Not hello";
 

@@ -47,9 +47,9 @@ if(!isset($_SESSION['username'], $_SESSION['id'], $_SESSION['studentid'], $_SESS
             <tr>
                 <th>Professor Name</th>
                 <th>Subject</th>
-                <th>Grades</th>
                 <th>Term</th>
-                <th>Remarks</th>
+                <th>Grade</th>
+                <th>Remark</th>
             </tr>
         </thead>
         <tbody>

@@ -54,7 +54,7 @@
                             </form>
                             <form action="delete_students.php" method="GET">
                                 <input type="hidden" name="delete_id" value="<?php echo $rows['ID']?>">
-                                <input type="submit" name="delete" value="Delete Students">
+                                <input class="delete" type="submit" name="delete" value="Delete Students">
                             </form>
                            
                         </td>
