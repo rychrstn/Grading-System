@@ -88,6 +88,8 @@ i {
 
 .table-contents{
     position: absolute;
+    top: 45%;
+    left: 20%;
     border-collapse: collapse;
     margin: 25px;
     font-size: 0.9rem;
@@ -95,8 +97,6 @@ i {
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    top: 45%;
-    left: 20%;
 }
 
 .table-contents thead tr {
@@ -119,6 +119,7 @@ i {
 
 .table-contents tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
+    
 }
 
 .table-contents tbody tr:last-of-type {

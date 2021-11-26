@@ -52,7 +52,7 @@
                 
                 </div>
                 <div class="input-box">
-                <span class="details">Year & Ccourse</span>
+                <span class="details">Year & Course</span>
                 <input type="text" name="edityearcourse" maxlength="19"  value="<?php echo $results['YearAndCourse']?>">
                 
                 </div>
