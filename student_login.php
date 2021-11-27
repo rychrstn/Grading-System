@@ -40,7 +40,7 @@
     <br>
     <div>
         <input style="border: 2px solid lightgreen; font-size: 20px"
-        type="text" name="username" placeholder="Username">
+        type="text" name="username" id="UserName" placeholder="Username">
         <br>
         <br>
         <input style="border: 2px solid lightgreen; font-size: 20px"
@@ -55,6 +55,28 @@
 		</div>
         </div>
     </div>
+    <script>
+        const username = document.querySelector('#UserName');
+
+    username.value = sessionStorage.getItem('username');
+
+    if(sessionStorage.getItem("autosave")){
+        username.value = sessionStorage.getItem("autosave");
+    }
+
+    username.addEventListener("change", function(){
+        sessionStorage.setItem("autosave", username.value);
+    })
+
+
+
+
+    sessionStorage.removeItem("autosave");
+
+ 
+
+
+    </script>
     </form>
 </body>
 </html>

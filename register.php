@@ -59,6 +59,7 @@
         <div style="font-family: monospace; font-size: 15px;">Already have an Account?</div> 
         <a style="text-decoration: none; color: #1EA4E3;
         font-family: monospace; font-size: 15px" href="student_login.php">Click here to Login</a>  <br>
+       <script src="app.js"></script>
     </form>
     
 </body>

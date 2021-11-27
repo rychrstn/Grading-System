@@ -25,17 +25,42 @@
     <br>
     <div>
         <input style="border: 2px solid lightgreen; font-size: 20px"
-        type="text" name="username" placeholder="Username">
+        type="text" name="username" id="Username" placeholder="Username">
         <br>
         <br>
         <input style="border: 2px solid lightgreen; font-size: 20px"
-         type = "password" name="password" placeholder="Password">
+         type = "password" name="password" id="Password" placeholder="Password">
         <br>
         <br>
         <br>
         <input class="btnlogin" style="width: 100px; height: 50px; color: white; background-color:black; font-size: 20px;" type="submit" name="login" value="Login">
         </div>
     </div>
+    <script>
+        const Username = document.getElementById("Username")
+        const Password = document.getElementById("Password")
+
+        Username.value = sessionStorage.getItem('username')
+        Password.value = sessionStorage.getItem("password")
+
+        if(sessionStorage.getItem("autosave")){
+            Username.value = sessionStorage.getItem("autosave");
+
+        }
+        if(sessionStorage.getItem("autosave2")){
+            Password.value = sessionStorage.getItem("autosave2");
+        }
+
+        Username.addEventListener("change", function(){
+            sessionStorage.setItem("autosave", Username.value);
+        })
+        Password.addEventListener("change", function(){
+            sessionStorage.setItem("autosave2", Password.value);
+        })
+
+        sessionStorage.removeItem("autosave");
+        sessionStorage.reomveItem("autosave2");
+    </script>
     </form>
 
 

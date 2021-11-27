@@ -27,7 +27,7 @@ function isNumber(evt) {
 }
 
 
-const text = document.querySelector("#sampleText")
+
 const Username = document.querySelector("#UserName")
 const Password = document.querySelector("#PassWord")
 const Id = document.querySelector("#ID")
@@ -90,3 +90,5 @@ sessionStorage.removeItem("autosave6");
 
     
 
+// Student login //
+       
