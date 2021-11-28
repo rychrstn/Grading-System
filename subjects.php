@@ -8,7 +8,6 @@
     <title>Create Subjects</title>
 </head>
 <body>
-    <?php include('admin_dashboard.php');?>
     <div class="box">
     <div class="wrapper">
 <div class="link_wrapper">
