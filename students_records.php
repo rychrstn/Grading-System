@@ -18,7 +18,7 @@
                             <th>Contact Number</th>
                             <th>Student Status</th>
                             <th>Valid</th>
-                            <th>Date Time Creted</th>
+                            <th>Date Time Created</th>
                             <th>Date Time Updated</th>
                             <th>Operations</th>
                         </tr>
@@ -26,7 +26,7 @@
                     <tbody>
                         <?php
                         include ('connection.php');
-                        $Query = "SELECT a.ID,a.Username,a.Password, a.StudentID, concat(a.Firstname, '' , a.Middlename, '' ,a.Lastname) AS StudentsName , a.YearAndCourse, a.ContactNumber, a.StudentStatus, a.Valid, a.DateTimeCreated, a.DateTimeUpdated FROM students AS a";
+                        $Query = "SELECT a.ID,a.Username,a.Password, a.StudentID, concat(a.Firstname, ' ' , a.Middlename, ' ' ,a.Lastname) AS StudentsName , a.YearAndCourse, a.ContactNumber, a.StudentStatus, a.Valid, a.DateTimeCreated, a.DateTimeUpdated FROM students AS a";
                         $sql = mysqli_query($conn,$Query);
                         if($rows = mysqli_num_rows($sql)> 0 ){
                             while($rows = mysqli_fetch_array($sql)){
