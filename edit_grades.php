@@ -22,8 +22,8 @@
         $Sql = mysqli_query($conn, $Query);
         if(mysqli_num_rows($Sql) > 0 ) {
             foreach($Sql as $Results){
-               
-             
+    
+    
                 
                 ?>
                 <div class="container">
@@ -34,7 +34,7 @@
                     <input type="hidden" name="studentid" value="<?php echo $Results['ID'];?>">
                     <div class="user-details">
                     <div class="input-box">
-                    <span class="details">Student's Name 
+                    <span class="details">Student's Name</span> 
                     <input type="text" name="studentsname" readonly value="<?php echo $Results['Student']?>">
                     <br>
                     </div>

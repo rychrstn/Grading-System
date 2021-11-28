@@ -54,9 +54,9 @@ include ('connection.php');
         $Res_Name = mysqli_query($conn , $SelectName);
         $Res_Sub = mysqli_query($conn , $SelectSub);
         if(mysqli_num_rows($Res_Sub) > 0 ) {
-            echo "The Subject Code is already taken";
+            echo"<script>alert('The Subject Code is already Taken!');</script>";
         }else if (mysqli_num_rows($Res_Name) > 0 ){
-            echo "The Subject Name is already taken";
+            echo"<script>alert('The Subject Name is already Taken!');</script>";
         }else{
             $Query = "INSERT INTO `subjects`(SubjectCode, SubjectName, Unit, DateTimeCreated) VALUES('$SubjectCode', '$SubjectName', '$Unit', '$Date')";
             if($sql = mysqli_query($conn, $Query)){
